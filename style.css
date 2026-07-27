@@ -189,7 +189,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   text-align:center;
   position:relative;
 }
-.hero-photo{ position:relative; width:100%; overflow:hidden; height:clamp(300px, 40vw, 460px); }
+.hero-photo{ position:relative; width:100%; overflow:hidden; height:clamp(380px, 46vw, 580px); }
 .hero-slides{ position:absolute; inset:0; z-index:0; }
 .hero-slide{
   position:absolute; inset:0; width:100%; height:100%;
@@ -207,20 +207,6 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   29%{ opacity:0; }
   100%{ opacity:0; }
 }
-/* Small round decorative motifs (sakura / kid-friendly) tucked into the
-   corners of the photo — deliberately subtle, not a focal element. */
-.hero-decor{ position:absolute; inset:0; z-index:1; pointer-events:none; }
-.hero-decor-dot{
-  position:absolute; display:flex; align-items:center; justify-content:center;
-  border-radius:50%; background:rgba(255,255,255,.85); box-shadow:0 4px 12px rgba(0,0,0,.12);
-}
-.hero-decor .dot-1{ top:20px; left:5%; width:54px; height:54px; font-size:25px; color:var(--green-deep); }
-.hero-decor .dot-2{ top:34px; right:7%; width:38px; height:38px; font-size:17px; color:var(--gold-deep); }
-@media (max-width:600px){
-  .hero-decor .dot-1{ width:42px; height:42px; font-size:19px; top:14px; left:4%; }
-  .hero-decor .dot-2{ width:30px; height:30px; font-size:14px; top:20px; right:5%; }
-}
-
 /* The catchphrase card floats over the photo's bottom edge instead of
    text being overlaid directly on the image. */
 .hero-card{

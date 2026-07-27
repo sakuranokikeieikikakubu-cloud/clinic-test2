@@ -1,14 +1,14 @@
 :root{
-  --green-deep:   #4d87a8;
-  --green:        #6fa8c9;
-  --green-pale:   #eaf4f8;
-  --gold:         #e8b84b;
-  --gold-deep:    #c99a2e;
-  --paper:        #f6fafc;
-  --line:         #d7e5ec;
+  --green-deep:   #1d8ac9;
+  --green:        #5db3e5;
+  --green-pale:   #e8f5fc;
+  --gold:         #f4c452;
+  --gold-deep:    #c89319;
+  --paper:        #f7fbfc;
+  --line:         #cee5f3;
   --white:        #ffffff;
 
-  --yg:           #c99a2e;
+  --yg:           #c89319;
 
   --text-heading: #2c5266;
   --text-body:    #333333;
@@ -26,7 +26,7 @@ body{
 a{ color:inherit; text-decoration:none; }
 ul{ list-style:none; }
 img{ max-width:100%; display:block; }
-h1,h2,h3,h4{ font-family:"Noto Serif JP", serif; }
+h1,h2,h3,h4{ font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; }
 
 .test-banner{
   background:#3a2f10;
@@ -50,7 +50,7 @@ header.site-header{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
 }
 .logo{
-  font-family:"Noto Serif JP", serif;
+  font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif;
   font-size:16.5px; font-weight:700; color:var(--green-deep);
   display:flex; align-items:center; gap:8px;
 }
@@ -85,7 +85,7 @@ header.site-header{
   nav.gnav .sub-menu .sub-menu{ top:-6px; left:100%; margin-left:6px; }
 }
 
-nav.gnav{ display:flex; min-width:0; font-family:"Noto Serif JP", serif; }
+nav.gnav{ display:flex; min-width:0; font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; }
 nav.gnav > ul{ display:flex; gap:0; }
 nav.gnav > ul > li{ position:relative; }
 nav.gnav > ul > li > a{
@@ -203,34 +203,54 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 .hero-overlay{
   position:absolute; inset:0; z-index:1;
   background:linear-gradient(to bottom,
-    rgba(10,28,38,.08) 0%,
-    rgba(10,28,38,.20) 22%,
-    rgba(10,28,38,.48) 42%,
-    rgba(10,28,38,.48) 60%,
-    rgba(10,28,38,.20) 80%,
-    rgba(10,28,38,.08) 100%);
+    rgba(8,24,34,.12) 0%,
+    rgba(8,24,34,.26) 22%,
+    rgba(8,24,34,.55) 42%,
+    rgba(8,24,34,.55) 60%,
+    rgba(8,24,34,.26) 80%,
+    rgba(8,24,34,.12) 100%);
 }
 .hero-inner{
-  position:relative; z-index:2; max-width:720px; margin:0 auto;
-  background:rgba(10,28,38,.30);
+  position:relative; z-index:2; max-width:740px; margin:0 auto;
+  background:rgba(8,24,34,.42);
   border-radius:20px;
-  padding:32px 36px;
+  padding:36px 40px;
 }
 .hero h1{
-  font-size:15px; font-weight:500; letter-spacing:.02em; margin-bottom:10px; color:#f5e9ec;
-  text-shadow:0 2px 8px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.45);
+  font-size:15px; font-weight:500; letter-spacing:.02em; margin-bottom:14px; color:#f2faff;
+  text-shadow:0 2px 8px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.5);
 }
 .hero h2{
-  font-size:clamp(24px,4vw,34px); line-height:1.6; margin-bottom:18px;
-  text-shadow:0 2px 10px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.5);
+  font-size:clamp(24px,4vw,34px); line-height:1.7; margin-bottom:20px;
+  text-shadow:0 2px 10px rgba(0,0,0,.6), 0 1px 3px rgba(0,0,0,.55);
 }
 .hero p{
-  font-size:14px; color:#f0e5e8; margin-bottom:28px;
-  text-shadow:0 1px 6px rgba(0,0,0,.5), 0 1px 2px rgba(0,0,0,.45);
+  font-size:14px; line-height:1.9; color:#eaf6fc; margin-bottom:28px;
+  text-shadow:0 1px 6px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.5);
 }
 .hero-note{
-  display:inline-block; font-size:12px; color:#ead1d8; border:1px dashed rgba(255,255,255,.5);
+  display:inline-block; font-size:12px; color:#eaf6fc; border:1px dashed rgba(255,255,255,.55);
   border-radius:999px; padding:6px 16px;
+}
+.nowrap{ white-space:nowrap; }
+
+/* ---------- Promo banners (WEB予約 / カウベルキッズ / LINE) ---------- */
+.promo-banners{ background:var(--white); padding:28px 0; }
+.promo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.promo-banner{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:20px 16px; border-radius:16px; color:var(--white);
+  font-size:15px; font-weight:700; text-align:center;
+  box-shadow:0 6px 16px rgba(30,60,45,.10);
+  transition:transform .15s, box-shadow .15s;
+}
+.promo-banner:hover{ transform:translateY(-3px); box-shadow:0 10px 22px rgba(30,60,45,.16); }
+.promo-banner i{ font-size:24px; flex:none; }
+.promo-reserve{ background:var(--green-deep); }
+.promo-cowbell{ background:var(--gold-deep); }
+.promo-line{ background:#06c755; }
+@media (max-width:820px){
+  .promo-grid{ grid-template-columns:1fr; }
 }
 
 /* ---------- Breadcrumb ---------- */
@@ -253,7 +273,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 }
 .page-title .eyebrow{ font-size:12px; letter-spacing:.2em; color:#ead1d8; margin-bottom:10px; }
 .page-title h1{ font-size:clamp(22px,4vw,30px); }
-.page-title-label{ font-family:"Noto Serif JP", serif; font-size:clamp(22px,4vw,30px); }
+.page-title-label{ font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-size:clamp(22px,4vw,30px); }
 
 .page-body{ background:var(--white); }
 .page-body.alt-bg{ background:var(--green-pale); }
@@ -413,16 +433,21 @@ table.hours{ width:100%; table-layout:fixed; border-collapse:collapse; font-size
 table.hours th, table.hours td{ border:1px solid var(--line); padding:9px 3px; overflow:hidden; }
 table.hours thead th{ background:var(--green-pale); color:var(--green-deep); }
 table.hours thead th:first-child{ width:18%; white-space:nowrap; }
-table.hours tbody td{ height:76px; vertical-align:middle; }
-.dept-badge{
-  display:flex; align-items:center; justify-content:center; text-align:center;
-  min-height:32px; background:#e4e4e4; color:var(--text-heading); font-size:10.5px; font-weight:700;
-  padding:3px 2px; border-radius:4px; margin-bottom:4px; line-height:1.3; word-break:keep-all;
-}
-.dept-staff{ display:block; font-size:10px; color:var(--text-body); }
+table.hours tbody td{ height:56px; vertical-align:middle; }
+/* Cells show a single symbol (see .hours-legend for meaning) instead of
+   repeating the full department name in every cell — the wordy version
+   used to wrap onto several lines and cram/overlap inside the narrow
+   day columns. */
+.dept-badge, .dept-staff, .dept-full{ display:none; }
 td.closed{ color:var(--text-body); font-weight:700; }
-.dept-symbol{ display:none; }
-.hours-legend{ display:none; font-size:12px; color:var(--text-body); line-height:1.6; }
+.dept-symbol{
+  display:block; font-size:22px; font-weight:700; line-height:1; color:var(--green-deep);
+}
+td.closed .dept-symbol{ color:var(--text-body); }
+.hours-legend{
+  display:block; font-size:12.5px; color:var(--text-body);
+  line-height:1.9; margin-top:12px; background:var(--green-pale); border-radius:8px; padding:12px 16px;
+}
 .hours-note{ font-size:12px; color:var(--text-body); margin-top:10px; }
 
 /* ---------- Service banners ---------- */
@@ -476,7 +501,7 @@ td.closed{ color:var(--text-body); font-weight:700; }
   aspect-ratio:4/3; border-radius:12px; background:var(--green-pale);
   width:100%; height:auto; object-fit:cover; display:block;
 }
-.f-no{ font-family:"Noto Serif JP",serif; font-size:12px; color:var(--gold); letter-spacing:.1em; margin-bottom:8px; }
+.f-no{ font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-size:12px; color:var(--gold); letter-spacing:.1em; margin-bottom:8px; }
 .f-title{ font-size:18px; color:var(--green-deep); margin-bottom:12px; }
 .f-text{ font-size:13px; color:var(--text-body); }
 .feature-dots{ display:none; }
@@ -687,7 +712,7 @@ footer{ background:var(--green-deep); color:#ead1d8; padding:56px 0 0; }
 .foot-leaf{ width:40px; height:40px; flex:none; object-fit:contain; }
 .foot-logo-text{ display:flex; flex-direction:column; }
 .foot-org-name{ font-family:"Noto Sans JP",sans-serif; font-size:11px; font-weight:400; color:#c9b7bb; letter-spacing:.03em; margin-bottom:2px; }
-.foot-clinic-name{ font-family:"Noto Serif JP",serif; font-size:19px; color:var(--white); }
+.foot-clinic-name{ font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-size:19px; color:var(--white); }
 .foot-hours{ font-size:13px; margin:14px 0; }
 .foot-hours p{ margin-bottom:2px; }
 /* Footer sits on the same deep-pink brand color as .btn-cta's default fill,
@@ -767,7 +792,7 @@ footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
 .faq-mark{
   flex:none; display:flex; align-items:center; justify-content:center;
   width:28px; height:28px; border-radius:50%;
-  font-family:"Noto Serif JP", serif; font-size:14px; font-weight:700;
+  font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-size:14px; font-weight:700;
 }
 .faq-q .faq-mark{ background:var(--green-deep); color:var(--white); }
 .faq-q-text{ flex:1; line-height:1.6; }
@@ -783,21 +808,8 @@ footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
   .hero-inner{ padding:20px 16px; }
   .hero p{ font-size:11.5px; }
 
-  .news-hours table.hours tbody td{ height:auto; padding:14px 3px; }
-  .news-hours .dept-badge, .news-hours .dept-staff, .news-hours .dept-full{ display:none; }
-  .news-hours .dept-symbol{
-    display:block; font-size:20px; font-weight:700; color:var(--green-deep); line-height:1;
-  }
-  .news-hours td.closed .dept-symbol{ color:var(--text-body); }
-  .news-hours .hours-legend{ display:block; margin-top:10px; }
-
-  #hours table.hours tbody td{ height:auto; padding:14px 3px; }
-  #hours .dept-badge, #hours .dept-staff, #hours .dept-full{ display:none; }
-  #hours .dept-symbol{
-    display:block; font-size:20px; font-weight:700; color:var(--green-deep); line-height:1;
-  }
-  #hours td.closed .dept-symbol{ color:var(--text-body); }
-  #hours .hours-legend{ display:block; margin-top:10px; }
+  table.hours tbody td{ padding:10px 3px; }
+  .dept-symbol{ font-size:19px; }
 
   .sisters-grid{ grid-template-columns:1fr; }
   .sister-card{ padding:16px 14px; gap:14px; }

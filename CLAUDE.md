@@ -4,7 +4,7 @@
 
 ## ヘッダー・フッター・ナビゲーションJSの共通化について
 
-全ページ共通のヘッダー(`<header class="site-header">`〜`</header>`)、フッター+モバイルCTAバー(`<footer id="footer">`〜モバイルCTAバーの`</div>`)、ハンバーガーメニューの開閉JS(`<script>`内の最初の`(function(){...})();`)、`<head>`内の共通構造化データ(JSON-LD、`<!-- structured-data:start -->`〜`<!-- structured-data:end -->`)は、`partials/header.html`・`partials/footer.html`・`partials/nav-script.js`・`partials/structured-data.html` を正として管理しています。
+全ページ共通のヘッダー(`<header class="site-header">`〜`</header>`)、右側追従の縦型フローティングメニュー(`<!-- side-fab:start -->`〜`<!-- side-fab:end -->`、ヘッダー直後に挿入)、フッター+モバイルCTAバー(`<footer id="footer">`〜モバイルCTAバーの`</div>`)、ハンバーガーメニューの開閉JS(`<script>`内の最初の`(function(){...})();`)、`<head>`内の共通構造化データ(JSON-LD、`<!-- structured-data:start -->`〜`<!-- structured-data:end -->`)は、`partials/header.html`・`partials/side-fab.html`・`partials/footer.html`・`partials/nav-script.js`・`partials/structured-data.html` を正として管理しています。
 
 各HTMLファイル自体には、これらのブロックの中身がそのまま(コピーではなく)書き出されています。**これらの共通部分を変更する場合は、`partials/` 配下のファイルを編集した後、必ず以下を実行してください。**
 

@@ -1,6 +1,7 @@
-// Syncs the shared header, footer, nav-toggle script, and structured data
-// into every page. Run `node build.js` after editing files in partials/,
-// then verify pages in the browser as usual before committing.
+// Syncs the shared header, footer, nav-toggle script, structured data, and
+// the floating side menu into every page. Run `node build.js` after editing
+// files in partials/, then verify pages in the browser as usual before
+// committing.
 
 const fs = require('fs');
 const path = require('path');
@@ -118,11 +119,46 @@ function syncStructuredData(html, structuredDataPartial, file) {
   return html.slice(0, insertAt) + structuredDataPartial + html.slice(insertAt);
 }
 
+// Sync the shared side floating menu (WEB予約 / LINE / カウベルキッズ / 電話)
+// right after </header>. Same insert-or-replace pattern as
+// syncStructuredData: replace the marked block if it already exists,
+// otherwise insert it anchored right after the header's closing tag.
+function syncSideFab(html, sideFabPartial, file) {
+  const startMark = '<!-- side-fab:start -->';
+  const endMark = '<!-- side-fab:end -->';
+
+  const startIdx = html.indexOf(startMark);
+  if (startIdx !== -1) {
+    const endIdx = html.indexOf(endMark, startIdx);
+    if (endIdx === -1) {
+      console.warn(`  [skip] side-fab: end marker not found in ${file}`);
+      return html;
+    }
+    let endOfRegion = endIdx + endMark.length;
+    while (html[endOfRegion] === '\n' || html[endOfRegion] === '\r') {
+      endOfRegion++;
+    }
+    return html.slice(0, startIdx) + sideFabPartial + html.slice(endOfRegion);
+  }
+
+  const anchor = '</header>';
+  const anchorIdx = html.indexOf(anchor);
+  if (anchorIdx === -1) {
+    console.warn(`  [skip] side-fab: anchor not found in ${file}`);
+    return html;
+  }
+  const afterAnchor = anchorIdx + anchor.length;
+  const lineEndIdx = html.indexOf('\n', afterAnchor);
+  const insertAt = lineEndIdx === -1 ? afterAnchor : lineEndIdx + 1;
+  return html.slice(0, insertAt) + sideFabPartial + html.slice(insertAt);
+}
+
 function main() {
   const headerPartial = readPartial('header.html');
   const footerPartial = readPartial('footer.html');
   const navScriptPartial = readPartial('nav-script.js');
   const structuredDataPartial = readPartial('structured-data.html');
+  const sideFabPartial = readPartial('side-fab.html');
 
   const targetFiles = fs
     .readdirSync(ROOT)
@@ -138,11 +174,13 @@ function main() {
     const footer = matchLineEndings(footerPartial, original);
     const navScript = matchLineEndings(navScriptPartial, original);
     const structuredData = matchLineEndings(structuredDataPartial, original);
+    const sideFab = matchLineEndings(sideFabPartial, original);
     const nl = original.includes('\r\n') ? '\r\n' : '\n';
 
     let updated = original;
     updated = syncStructuredData(updated, structuredData, file);
     updated = replaceInclusive(updated, '<header class="site-header">', '</header>', header, 'header', file);
+    updated = syncSideFab(updated, sideFab, file);
     updated = replaceUpTo(updated, '<footer id="footer">', '<script>', footer + nl + nl, 'footer', file);
     updated = syncNavScript(updated, navScript, file);
 

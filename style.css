@@ -717,8 +717,8 @@ footer{ background:var(--green-deep); color:#ead1d8; padding:56px 0 0; }
    so it needs an inverted (white-on-pink) treatment to stay visible there. */
 footer .btn-cta{ background:var(--white); color:var(--green-deep); box-shadow:none; }
 footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
-.foot-addr{ font-size:13px; margin:14px 0; }
-.foot-tel{ font-size:20px; font-weight:700; color:var(--white); }
+.foot-addr{ font-size:13px; margin:14px 0 6px; }
+.foot-tel{ font-size:20px; font-weight:700; color:var(--white); line-height:1.3; }
 .foot-map{
   aspect-ratio:16/9; border-radius:10px; overflow:hidden;
   border:1px solid rgba(255,255,255,.15);

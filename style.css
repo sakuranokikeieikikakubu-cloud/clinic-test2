@@ -470,7 +470,7 @@ td.closed{ color:var(--text-body); font-weight:700; }
 .dept-symbol{
   display:block; font-size:22px; font-weight:700; line-height:1; color:var(--green-deep);
 }
-.dept-time{ display:block; font-size:11px; font-weight:700; margin-top:3px; }
+.dept-time{ display:block; font-size:9px; font-weight:700; margin-top:2px; white-space:nowrap; }
 td.closed .dept-symbol{ color:var(--text-body); }
 .hours-legend{
   display:block; font-size:12.5px; color:var(--text-body);
@@ -818,8 +818,9 @@ footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
 .faq-a a{ color:var(--green-deep); text-decoration:underline; }
 
 @media (max-width:480px){
-  table.hours tbody td{ padding:10px 3px; }
+  table.hours tbody td{ padding:10px 2px; }
   .dept-symbol{ font-size:19px; }
+  .dept-time{ font-size:8px; letter-spacing:-.3px; }
 
   .sisters-grid{ grid-template-columns:1fr; }
   .sister-card{ padding:16px 14px; gap:14px; }

@@ -181,6 +181,15 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   .header-inner{ flex-wrap:wrap; }
   .nav-toggle{ display:flex; order:1; }
 
+  /* Flex-wrap decides how many lines to use based on each item's
+     hypothetical (content) size, before any shrinking is applied — so a
+     long clinic name simply pushes the hamburger button onto its own
+     line no matter how shrinkable the logo is. Forcing the name onto two
+     shorter lines (via the sp-break <br> in the markup) and trimming the
+     font size directly reduces that hypothetical size instead. */
+  .logo{ font-size:14px; }
+  .logo small{ font-size:9px; padding:1px 6px; }
+
   .header-cta{ display:none; }
 
   .mobile-cta-bar{ display:flex; }
@@ -199,6 +208,12 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   }
   nav.gnav li.sub-open > .sub-menu{ display:block; }
   nav.gnav li.sub-open > a .nav-chevron{ transform:rotate(180deg); }
+}
+@media (max-width:340px){
+  /* Extra-narrow legacy widths: the locality/department pill is the widest
+     line once the clinic name wraps to two lines — drop it here so the
+     hamburger still shares the header's first row. */
+  .logo small{ display:none; }
 }
 
 /* ---------- Hero ---------- */
@@ -455,6 +470,7 @@ td.closed{ color:var(--text-body); font-weight:700; }
 .dept-symbol{
   display:block; font-size:22px; font-weight:700; line-height:1; color:var(--green-deep);
 }
+.dept-time{ display:block; font-size:11px; font-weight:700; margin-top:3px; }
 td.closed .dept-symbol{ color:var(--text-body); }
 .hours-legend{
   display:block; font-size:12.5px; color:var(--text-body);
@@ -739,7 +755,8 @@ footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
   }
   .feature-carousel::-webkit-scrollbar{ display:none; }
   .feature-row, .feature-row.rev{
-    grid-template-columns:1fr; flex:0 0 100%; scroll-snap-align:center;
+    display:flex; flex-direction:column; align-items:stretch;
+    flex:0 0 100%; scroll-snap-align:center;
     border-bottom:none; padding:0;
   }
   .feature-row.rev .f-img{ order:0; }
@@ -760,6 +777,7 @@ footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
   }
   .foot-addr-sep{ display:none; }
   .foot-addr-line{ display:block; }
+  .sec-head h2.features-heading{ font-size:16px; line-height:1.5; }
 }
 
 /* ---------- FAQ accordion ---------- */

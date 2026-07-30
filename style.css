@@ -278,36 +278,57 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 }
 
 /* Sibling AFTER .hero (not clipped by its overflow:hidden); a small
-   negative top margin lifts it so only its upper half overlaps the
-   photo's bottom edge. These are informational, not links — flat,
-   slightly-rounded rectangles on a translucent grey (not white, not a
-   full pill) so they don't read as tappable buttons; no hover motion,
-   no pointer cursor. */
+   negative top margin lifts the circles so only their upper half
+   overlaps the photo's bottom edge, with the label sitting clear of the
+   photo below. These are informational, not links — round icon badges
+   rather than pill buttons, no hover motion, no pointer cursor. */
 .hero-badges{
   position:relative; z-index:3;
-  display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
-  max-width:760px; margin:-16px auto 0; padding:0 20px;
+  display:flex; justify-content:center; gap:26px;
+  max-width:760px; margin:-32px auto 0; padding:0 20px;
 }
 .hero-badge{
-  display:inline-flex; align-items:center; gap:6px;
-  background:rgba(238,235,236,.88); color:var(--text-heading);
-  font-size:12px; font-weight:700; white-space:nowrap; cursor:default;
-  padding:8px 15px; border-radius:6px;
-  box-shadow:0 3px 8px rgba(30,20,25,.10);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  width:100px; cursor:default;
 }
-.hero-badge i{ font-size:15px; }
-.hero-badge:nth-child(1) i{ color:var(--green-deep); }
-.hero-badge:nth-child(2) i{ color:var(--accent-blue-deep); }
-.hero-badge:nth-child(3) i{ color:var(--gold-deep); }
+.hero-badge-circle{
+  width:64px; height:64px; flex:none; border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 18px rgba(30,20,25,.18);
+}
+.hero-badge-circle i{ font-size:24px; }
+.hero-badge:nth-child(1) .hero-badge-circle i{ color:var(--green-deep); }
+.hero-badge:nth-child(2) .hero-badge-circle i{ color:var(--accent-blue-deep); }
+.hero-badge:nth-child(3) .hero-badge-circle i{ color:var(--gold-deep); }
+.hero-badge-label{
+  font-size:11.5px; font-weight:700; color:var(--text-heading);
+  text-align:center; line-height:1.35;
+}
 
+/* Scattered small/large, light/dark so the three don't read as a
+   repeated pattern — corners only, clear of the centered catchcopy and
+   badge row. */
 .hero-sakura{
-  position:absolute; top:22px; right:26px; z-index:2;
-  width:46px; height:46px; color:var(--white); opacity:.55;
-  transform:rotate(-12deg);
+  position:absolute; z-index:2; color:var(--white);
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));
 }
+.hero-sakura-1{
+  top:22px; right:26px; width:46px; height:46px;
+  opacity:.55; transform:rotate(-12deg);
+}
+.hero-sakura-2{
+  top:18px; left:20px; width:24px; height:24px;
+  opacity:.32; transform:rotate(18deg);
+}
+.hero-sakura-3{
+  bottom:36px; left:8%; width:34px; height:34px;
+  opacity:.4; transform:rotate(-25deg);
+}
 @media (max-width:820px){
-  .hero-sakura{ width:32px; height:32px; top:14px; right:16px; }
+  .hero-sakura-1{ width:32px; height:32px; top:14px; right:16px; }
+  .hero-sakura-2{ width:18px; height:18px; top:12px; left:14px; }
+  .hero-sakura-3{ width:24px; height:24px; bottom:26px; left:6%; }
 }
 
 .hero-photo-dots{
@@ -329,9 +350,11 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   .hero-catch-label{ font-size:10.5px; }
   .hero-catch-sublabel{ font-size:10px; margin-bottom:7px; }
   .hero-catchcopy h2{ font-size:clamp(14px, 4vw, 17px); }
-  .hero-badges{ gap:8px; margin-top:-14px; padding:0 14px; }
-  .hero-badge{ font-size:11px; padding:7px 12px; }
-  .hero-badge i{ font-size:13px; }
+  .hero-badges{ gap:14px; margin-top:-26px; padding:0 14px; }
+  .hero-badge{ width:80px; gap:6px; }
+  .hero-badge-circle{ width:52px; height:52px; }
+  .hero-badge-circle i{ font-size:19px; }
+  .hero-badge-label{ font-size:10px; }
 }
 .nowrap{ white-space:nowrap; }
 

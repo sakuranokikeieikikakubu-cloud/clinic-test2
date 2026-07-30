@@ -255,21 +255,17 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 .hero-slide:nth-of-type(4){ object-position:center 8%; }
 
 .hero-catchcopy{
-  position:absolute; left:50%; top:60%; transform:translate(-50%, -50%);
+  position:absolute; left:50%; top:54%; transform:translate(-50%, -50%);
   z-index:2; width:92%; max-width:640px; text-align:center;
 }
 .hero-catchcopy-inner{
-  display:inline-block; padding:14px 28px;
+  display:inline-block; padding:16px 28px;
   background:radial-gradient(ellipse at center,
     rgba(20,8,24,.52) 0%, rgba(20,8,24,.30) 58%, rgba(20,8,24,0) 85%);
 }
 .hero-catch-label{
-  font-size:12px; font-weight:700; color:#ffd7e6; letter-spacing:.03em;
-  margin-bottom:2px; text-shadow:0 2px 8px rgba(0,0,0,.5);
-}
-.hero-catch-sublabel{
-  font-size:11.5px; font-weight:500; color:#f3e9ee;
-  margin-bottom:10px; text-shadow:0 2px 8px rgba(0,0,0,.5);
+  font-size:16px; font-weight:700; color:#ffd7e6; letter-spacing:.03em;
+  margin-bottom:6px; text-shadow:0 2px 8px rgba(0,0,0,.5);
 }
 .hero-catchcopy h2{
   margin:0; color:var(--white); font-weight:700;
@@ -277,33 +273,32 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   text-shadow:0 2px 10px rgba(0,0,0,.5);
 }
 
-/* Sibling AFTER .hero (not clipped by its overflow:hidden); a small
-   negative top margin lifts the circles so only their upper half
-   overlaps the photo's bottom edge, with the label sitting clear of the
-   photo below. These are informational, not links — round icon badges
-   rather than pill buttons, no hover motion, no pointer cursor. */
+/* Now inside the same soft-dark catchcopy panel (not a sibling straddling
+   the photo edge), so the whole text+badge group stays within the photo.
+   Informational, not links — round icon badges rather than pill buttons,
+   no hover motion, no pointer cursor. */
 .hero-badges{
-  position:relative; z-index:3;
-  display:flex; justify-content:center; gap:26px;
-  max-width:760px; margin:-32px auto 0; padding:0 20px;
+  display:flex; justify-content:center; gap:22px;
+  margin-top:16px;
 }
 .hero-badge{
-  display:flex; flex-direction:column; align-items:center; gap:8px;
-  width:100px; cursor:default;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  width:88px; cursor:default;
 }
 .hero-badge-circle{
-  width:64px; height:64px; flex:none; border-radius:50%;
+  width:54px; height:54px; flex:none; border-radius:50%;
   background:rgba(255,255,255,.95);
   display:flex; align-items:center; justify-content:center;
-  box-shadow:0 8px 18px rgba(30,20,25,.18);
+  box-shadow:0 6px 14px rgba(0,0,0,.25);
 }
-.hero-badge-circle i{ font-size:24px; }
+.hero-badge-circle i{ font-size:21px; }
 .hero-badge:nth-child(1) .hero-badge-circle i{ color:var(--green-deep); }
 .hero-badge:nth-child(2) .hero-badge-circle i{ color:var(--accent-blue-deep); }
 .hero-badge:nth-child(3) .hero-badge-circle i{ color:var(--gold-deep); }
 .hero-badge-label{
-  font-size:11.5px; font-weight:700; color:var(--text-heading);
+  font-size:11px; font-weight:700; color:var(--white);
   text-align:center; line-height:1.35;
+  text-shadow:0 2px 6px rgba(0,0,0,.5);
 }
 
 /* Scattered small/large, light/dark so the three don't read as a
@@ -345,16 +340,15 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   .hero{
     min-height:clamp(340px, 75vw, 460px); border-radius:0 0 56px 0;
   }
-  .hero-catchcopy{ top:62%; }
-  .hero-catchcopy-inner{ padding:10px 18px; }
-  .hero-catch-label{ font-size:10.5px; }
-  .hero-catch-sublabel{ font-size:10px; margin-bottom:7px; }
+  .hero-catchcopy{ top:52%; }
+  .hero-catchcopy-inner{ padding:12px 16px; }
+  .hero-catch-label{ font-size:13px; margin-bottom:4px; }
   .hero-catchcopy h2{ font-size:clamp(14px, 4vw, 17px); }
-  .hero-badges{ gap:14px; margin-top:-26px; padding:0 14px; }
-  .hero-badge{ width:80px; gap:6px; }
-  .hero-badge-circle{ width:52px; height:52px; }
-  .hero-badge-circle i{ font-size:19px; }
-  .hero-badge-label{ font-size:10px; }
+  .hero-badges{ gap:10px; margin-top:12px; }
+  .hero-badge{ width:72px; gap:4px; }
+  .hero-badge-circle{ width:44px; height:44px; }
+  .hero-badge-circle i{ font-size:16px; }
+  .hero-badge-label{ font-size:9.5px; }
 }
 .nowrap{ white-space:nowrap; }
 

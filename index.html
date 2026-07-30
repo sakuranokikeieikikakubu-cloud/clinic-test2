@@ -168,7 +168,11 @@
   </div>
   <svg class="hero-sakura" viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor"><path d="M12,12 C9,12 8,8 8.5,5 C8.8,3.3 10,2 12,2 C14,2 15.2,3.3 15.5,5 C16,8 15,12 12,12 Z"/><path d="M12,12 C9,12 8,8 8.5,5 C8.8,3.3 10,2 12,2 C14,2 15.2,3.3 15.5,5 C16,8 15,12 12,12 Z" transform="rotate(72 12 12)"/><path d="M12,12 C9,12 8,8 8.5,5 C8.8,3.3 10,2 12,2 C14,2 15.2,3.3 15.5,5 C16,8 15,12 12,12 Z" transform="rotate(144 12 12)"/><path d="M12,12 C9,12 8,8 8.5,5 C8.8,3.3 10,2 12,2 C14,2 15.2,3.3 15.5,5 C16,8 15,12 12,12 Z" transform="rotate(216 12 12)"/><path d="M12,12 C9,12 8,8 8.5,5 C8.8,3.3 10,2 12,2 C14,2 15.2,3.3 15.5,5 C16,8 15,12 12,12 Z" transform="rotate(288 12 12)"/></g></svg>
   <div class="hero-catchcopy">
-    <h2>お子様からご家族みんなの<br>『かかりつけ医』として</h2>
+    <div class="hero-catchcopy-inner">
+      <p class="hero-catch-label">さくらのき米山ファミリークリニック</p>
+      <p class="hero-catch-sublabel">京都府向日市の小児科・内科・アレルギー科</p>
+      <h2>お子様からご家族みんなの<br><span class="nowrap">『かかりつけ医』として、</span> <span class="nowrap">外来から在宅まで。</span></h2>
+    </div>
   </div>
 </section>
 <div class="hero-badges">
@@ -629,8 +633,12 @@
 
   (function(){
     // Hero photo slideshow: same dot/autoplay/pause-then-resume structure as
-    // the feature carousel above, but crossfades via opacity instead of
-    // scrolling (this carousel isn't a horizontally-scrollable strip).
+    // the feature carousel above, but fades via opacity instead of scrolling
+    // (this carousel isn't a horizontally-scrollable strip). The outgoing
+    // slide's is-active is removed immediately and the incoming slide's is
+    // only added once the fade-out finishes (matching the CSS opacity
+    // duration below) — sequential, not simultaneous, so the two photos
+    // never appear blended/overlapping mid-transition.
     var slidesWrap = document.getElementById('heroSlides');
     var dots = document.querySelectorAll('#heroDots .hero-photo-dot');
     if (!slidesWrap || !dots.length) return;
@@ -639,10 +647,19 @@
     var current = 0;
     var autoplayTimer = null;
     var resumeTimer = null;
+    var fadeInTimer = null;
+    var FADE_MS = 550;
 
     function setActive(i){
-      slides.forEach(function(slide, idx){ slide.classList.toggle('is-active', idx === i); });
+      if (fadeInTimer){ clearTimeout(fadeInTimer); fadeInTimer = null; }
+      slides.forEach(function(slide, idx){
+        if (idx !== i) slide.classList.remove('is-active');
+      });
       dots.forEach(function(dot, idx){ dot.classList.toggle('is-active', idx === i); });
+      fadeInTimer = setTimeout(function(){
+        slides[i].classList.add('is-active');
+        fadeInTimer = null;
+      }, FADE_MS);
     }
 
     function goTo(i){

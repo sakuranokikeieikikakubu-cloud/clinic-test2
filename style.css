@@ -341,7 +341,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
    background below the hero, not straddling the seam. */
 .hero-photo-dots{
   display:flex; justify-content:center; gap:8px;
-  margin:40px auto 0;
+  margin:90px auto 0;
 }
 .hero-photo-dot{
   width:8px; height:8px; padding:0; border:none; border-radius:50%;

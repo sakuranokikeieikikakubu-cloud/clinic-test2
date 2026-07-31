@@ -580,7 +580,7 @@ td.closed{ color:var(--text-body); font-weight:700; }
 td.closed .dept-symbol{ color:var(--text-body); }
 .hours-legend{
   display:block; font-size:12.5px; color:var(--text-body);
-  line-height:1.9; margin-top:12px; background:var(--green-pale); border-radius:8px; padding:12px 16px;
+  line-height:1.9; margin-top:12px; background:#f7f7f7; border:1px solid var(--line); border-radius:8px; padding:12px 16px;
 }
 .hours-note{ font-size:12px; color:var(--text-body); margin-top:10px; }
 

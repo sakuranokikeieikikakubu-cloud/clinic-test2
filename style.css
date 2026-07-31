@@ -554,13 +554,17 @@ table.hours{ width:100%; table-layout:fixed; border-collapse:collapse; font-size
 table.hours th, table.hours td{ border:1px solid var(--line); padding:9px 3px; overflow:hidden; }
 table.hours thead th{ background:var(--green-pale); color:var(--green-deep); }
 table.hours thead th:first-child{ width:18%; white-space:nowrap; }
-table.hours tbody td{ height:56px; vertical-align:middle; }
+table.hours tbody td{ height:50px; vertical-align:middle; }
+/* Body cells (time labels + symbols) are sized down from the header row —
+   keeps the heading legible while the repeated cell content stays compact. */
+table.hours tbody th, table.hours tbody td{ font-size:11px; padding:7px 2px; }
 /* Home page's news+hours side-by-side layout only — the table sits next to
    the news column there, so it's sized down to stay compact next to it.
    The standalone table on access.html keeps the base size above. */
 .news-hours table.hours{ width:85%; font-size:12px; }
 .news-hours table.hours th, .news-hours table.hours td{ padding:7px 2px; }
-.news-hours table.hours tbody td{ height:46px; }
+.news-hours table.hours tbody td{ height:42px; }
+.news-hours table.hours tbody th, .news-hours table.hours tbody td{ font-size:10px; padding:6px 1px; }
 /* Cells show a single symbol (see .hours-legend for meaning) instead of
    repeating the full department name in every cell — the wordy version
    used to wrap onto several lines and cram/overlap inside the narrow
@@ -568,11 +572,11 @@ table.hours tbody td{ height:56px; vertical-align:middle; }
 .dept-badge, .dept-staff, .dept-full{ display:none; }
 td.closed{ color:var(--text-body); font-weight:700; }
 .dept-symbol{
-  display:block; font-size:22px; font-weight:700; line-height:1; color:var(--green-deep);
+  display:block; font-size:20px; font-weight:700; line-height:1; color:var(--green-deep);
 }
-.dept-time{ display:block; font-size:9px; font-weight:700; margin-top:2px; white-space:nowrap; }
-.news-hours .dept-symbol{ font-size:19px; }
-.news-hours .dept-time{ font-size:8px; }
+.dept-time{ display:block; font-size:7px; font-weight:700; margin-top:2px; white-space:nowrap; }
+.news-hours .dept-symbol{ font-size:17px; }
+.news-hours .dept-time{ font-size:6px; }
 td.closed .dept-symbol{ color:var(--text-body); }
 .hours-legend{
   display:block; font-size:12.5px; color:var(--text-body);
@@ -929,9 +933,9 @@ footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
 .faq-a a{ color:var(--green-deep); text-decoration:underline; }
 
 @media (max-width:480px){
-  table.hours tbody td{ padding:10px 2px; }
-  .dept-symbol{ font-size:19px; }
-  .dept-time{ font-size:8px; letter-spacing:-.3px; }
+  table.hours tbody td{ padding:8px 2px; }
+  .dept-symbol{ font-size:17px; }
+  .dept-time{ font-size:6px; letter-spacing:-.3px; }
 
   .sisters-grid{ grid-template-columns:1fr; }
   .sister-card{ padding:16px 14px; gap:14px; }

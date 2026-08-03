@@ -383,7 +383,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 
 /* ---------- Page title (internal pages) ---------- */
 .page-title{
-  background:linear-gradient(135deg, var(--green-deep), var(--green) 70%);
+  background:var(--green-deep);
   color:var(--white);
   padding:48px 24px;
   text-align:center;
@@ -835,31 +835,29 @@ a.symptom-tag:hover{ background:var(--green-pale); border-color:var(--green-deep
 .sisters-toggle{ display:none; }
 
 /* ---------- Footer ---------- */
-footer{ background:var(--green-deep); color:#ead1d8; padding:56px 0 0; }
-.foot-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:44px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.15); }
+/* Light pink background — text/icons switch to a dark pink for contrast
+   (previously white-on-deep-pink; the deep-pink fill is gone). */
+footer{ background:#ffb6c1; color:#5c2a3a; padding:56px 0 0; }
+.foot-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:44px; padding-bottom:36px; border-bottom:1px solid rgba(92,42,58,.18); }
 .foot-logo{
   display:flex; align-items:center; gap:8px;
   margin-bottom:14px;
 }
 .foot-leaf{ width:40px; height:40px; flex:none; object-fit:contain; }
 .foot-logo-text{ display:flex; flex-direction:column; }
-.foot-org-name{ font-family:"Noto Sans JP",sans-serif; font-size:11px; font-weight:400; color:#c9b7bb; letter-spacing:.03em; margin-bottom:2px; }
-.foot-clinic-name{ font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-size:19px; color:var(--white); }
+.foot-org-name{ font-family:"Noto Sans JP",sans-serif; font-size:11px; font-weight:400; color:#6b3d48; letter-spacing:.03em; margin-bottom:2px; }
+.foot-clinic-name{ font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-size:19px; color:#5c2a3a; }
 .foot-hours{ font-size:13px; margin:14px 0; }
 .foot-hours p{ margin-bottom:2px; }
-/* Footer sits on the same deep-pink brand color as .btn-cta's default fill,
-   so it needs an inverted (white-on-pink) treatment to stay visible there. */
-footer .btn-cta{ background:var(--white); color:var(--green-deep); box-shadow:none; }
-footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
 .foot-addr{ font-size:13px; margin:14px 0 6px; }
-.foot-tel{ font-size:20px; font-weight:700; color:var(--white); line-height:1.3; }
+.foot-tel{ font-size:20px; font-weight:700; color:#5c2a3a; line-height:1.3; }
 .foot-map{
   aspect-ratio:16/9; border-radius:10px; overflow:hidden;
-  border:1px solid rgba(255,255,255,.15);
+  border:1px solid rgba(92,42,58,.25);
 }
 .foot-map iframe{ width:100%; height:100%; display:block; border:0; }
 .foot-sns{ margin-top:14px; display:inline-flex; align-items:center; gap:8px; font-size:13px; }
-.copyright{ text-align:center; font-size:11px; color:#c2a8af; padding:16px 0 28px; }
+.copyright{ text-align:center; font-size:11px; color:#6b3d48; padding:16px 0 28px; }
 
 @media (max-width:820px){
   .nh-grid, .greet-grid, .foot-grid{ grid-template-columns:1fr; }
@@ -975,10 +973,7 @@ footer .btn-cta:hover{ background:var(--green-pale); color:var(--green-deep); }
   --paper:      #fffaf2;
 }
 .page-title.cowbell-theme .eyebrow{ color:#fff2df; }
-/* Bright, left-to-right orange band (no dark corner) — kept separate from
-   --green-deep since that variable also serves as on-white heading text
-   and needs to stay a bit richer for legibility. */
-.page-title.cowbell-theme{ background:linear-gradient(90deg, #ffb347, #ffa500 65%); }
+.page-title.cowbell-theme{ background:#ffa500; }
 
 .cowbell-hero-photo{
   max-width:65%; margin:0 auto 28px; border-radius:20px; overflow:hidden;

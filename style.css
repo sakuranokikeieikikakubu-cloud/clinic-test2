@@ -161,12 +161,15 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   box-shadow:0 -4px 16px rgba(61,43,40,.18);
 }
 .mcta-btn{
-  flex:1 1 50%; display:flex; align-items:center; justify-content:center; gap:6px;
-  padding:14px 8px; font-size:14px; font-weight:700; color:var(--white);
+  flex:1 1 25%; min-width:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  padding:11px 4px; font-size:11px; font-weight:700; color:var(--white); text-align:center; line-height:1.25;
+  font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif;
 }
-.mcta-btn i{ font-size:17px; }
-.mcta-web{ background:var(--green-deep); }
-.mcta-tel{ background:#8a6414; }
+.mcta-btn i{ font-size:19px; }
+.mcta-web{ background:#4169e1; }
+.mcta-line{ background:#06c755; }
+.mcta-cowbell{ background:#ffa500; }
+.mcta-tel{ background:#ff69b4; }
 
 .nav-toggle{
   display:none; flex-direction:column; justify-content:center; align-items:center;
@@ -197,7 +200,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   .header-cta{ display:none; }
 
   .mobile-cta-bar{ display:flex; }
-  body{ padding-bottom:60px; }
+  body{ padding-bottom:84px; }
 
   nav.gnav{
     display:none; order:3; width:100%; flex-basis:100%;

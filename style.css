@@ -520,7 +520,6 @@ section{ padding:64px 0; scroll-margin-top:84px; }
 .sec-head{ text-align:center; margin-bottom:36px; }
 .sec-head .eyebrow{ font-size:12px; letter-spacing:.18em; color:var(--gold); font-weight:700; margin-bottom:8px; }
 .sec-head h2{ font-size:24px; color:var(--green-deep); }
-.sec-leaf{ width:18px; height:18px; opacity:.35; vertical-align:-3px; margin-right:6px; color:var(--green-deep); }
 .placeholder-tag{
   display:inline-block; font-size:11px; background:#fdf1dd; color:#8a6414;
   border:1px solid #f0d9a6; border-radius:5px; padding:2px 8px; margin-left:8px; vertical-align:middle;
@@ -533,9 +532,10 @@ section{ padding:64px 0; scroll-margin-top:84px; }
   font-size:16px; color:var(--green-deep); margin-bottom:16px; border-bottom:2px solid var(--green-pale);
   padding-bottom:10px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 10px;
 }
+.head-title{ display:inline-flex; align-items:center; }
 .head-ico{
   display:inline-flex; align-items:center; justify-content:center;
-  width:26px; height:26px; margin-right:8px; vertical-align:-7px;
+  width:26px; height:26px; margin-right:8px; flex-shrink:0;
   border-radius:50%; color:var(--white); font-size:14px;
 }
 .head-ico-pink{ background:var(--green-deep); }

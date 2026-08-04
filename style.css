@@ -383,7 +383,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 
 /* ---------- Page title (internal pages) ---------- */
 .page-title{
-  background:var(--green-deep);
+  background:#ea6490;
   color:var(--white);
   padding:48px 24px;
   text-align:center;

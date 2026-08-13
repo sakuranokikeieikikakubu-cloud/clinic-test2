@@ -244,7 +244,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 .hero-layout{
   max-width:1320px; margin:0 auto; padding:40px 32px;
   display:flex; align-items:center; gap:40px;
-  background:linear-gradient(135deg, var(--green-pale) 0%, var(--white) 100%);
+  background:var(--green-pale);
   border-radius:32px;
   position:relative;
 }
@@ -254,6 +254,13 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   border-radius:24px; aspect-ratio:5/4;
   min-height:380px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+.hero-photo-frame::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(to right, transparent 60%, var(--green-pale) 100%);
+  pointer-events:none;
+  z-index:1;
 }
 .hero-photo-slides{ position:absolute; inset:0; z-index:0; }
 /* Sequential fade (JS removes .is-active from the outgoing slide and only

@@ -128,8 +128,14 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 .header-tel small{ display:block; font-size:10px; font-weight:400; color:var(--text-body); }
 
 /* ---------- Side floating menu (desktop only; mobile-cta-bar covers phones/tablets) ---------- */
+/* Fixed to the viewport (not a descendant of .hero), so the hero frame's
+   inset/padding can't reach it structurally — but its old right:18px
+   happened to exactly match the hero frame's border thickness, so its
+   edge landed flush on the frame's inner boundary with zero gap,
+   reading as tucked inside the card. Nudged closer to the true edge so
+   it no longer lines up with that seam. */
 .side-fab{
-  position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:400;
+  position:fixed; right:8px; top:50%; transform:translateY(-50%); z-index:400;
   display:flex; flex-direction:column; gap:10px;
 }
 .side-fab-item{
@@ -229,13 +235,23 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
    (radial gradient, not a solid box) so the photo stays the star. Three
    fact badges overlap the photo's bottom edge, and the slide dots sit
    further down, clear of both. Same structure serves PC and mobile —
-   sizes just scale down via the media query. The bottom-right corner is
-   softened with a large border-radius so the section doesn't read as a
-   hard rectangle. */
+   sizes just scale down via the media query.
+
+   .hero itself is just the frame: its own background paints the thick
+   pale-pink border, and .hero-inner — inset from it, separately rounded
+   and clipped — holds the photo/decorations/copy so they never touch
+   the frame directly. (.hero can't clip+inset its direct children by
+   padding alone: padding doesn't constrain absolutely-positioned
+   descendants, only a real border or a separate inset wrapper does.) */
 .hero{
-  position:relative; overflow:hidden;
+  position:relative;
   min-height:clamp(420px, 56vw, 640px);
-  border-radius:0 0 100px 0;
+  border-radius:28px;
+  background:var(--paper);
+}
+.hero-inner{
+  position:absolute; inset:18px;
+  border-radius:16px; overflow:hidden;
 }
 .hero-photo-slides{ position:absolute; inset:0; z-index:0; }
 /* Sequential fade (JS removes .is-active from the outgoing slide and only
@@ -433,8 +449,9 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 
 @media (max-width:820px){
   .hero{
-    min-height:clamp(340px, 75vw, 460px); border-radius:0 0 56px 0;
+    min-height:clamp(340px, 75vw, 460px); border-radius:20px;
   }
+  .hero-inner{ inset:12px; border-radius:11px; }
   .hero-catchcopy{ top:52%; }
   .hero-catchcopy-inner{ padding:12px 16px; }
   .hero-catch-label{ font-size:13px; margin-bottom:4px; }

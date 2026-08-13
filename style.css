@@ -242,13 +242,14 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
    (mirrors .container). */
 .hero{ background:var(--white); }
 .hero-layout{
-  max-width:1100px; margin:0 auto; padding:0 24px;
-  display:flex; align-items:center; gap:44px;
+  max-width:1320px; margin:0 auto; padding:0 32px;
+  display:flex; align-items:center; gap:56px;
 }
 .hero-media{ flex:1 1 46%; min-width:0; }
 .hero-photo-frame{
   position:relative; overflow:hidden;
-  border-radius:28px; aspect-ratio:4/3;
+  border-radius:28px; aspect-ratio:5/4;
+  min-height:380px;
   box-shadow:0 12px 28px rgba(0,0,0,.14);
 }
 .hero-photo-slides{ position:absolute; inset:0; z-index:0; }

@@ -288,37 +288,6 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   margin-bottom:6px; text-shadow:0 2px 8px rgba(0,0,0,.5);
 }
 
-/* Speech-bubble keyword tags, directly above the heading. White fill so
-   they read as a distinct pop of color against the photo, with a small
-   triangular tail (two stacked pseudo-triangles: colored one behind,
-   white one in front, offset to fake a border) so they look like
-   speech bubbles rather than plain pills. */
-.hero-tags{
-  display:flex; justify-content:center; gap:10px;
-  margin-bottom:10px;
-}
-.hero-tag{
-  position:relative; display:inline-block;
-  padding:5px 14px; border-radius:999px;
-  background:var(--white); font-size:12px; font-weight:700;
-  box-shadow:0 3px 8px rgba(0,0,0,.2);
-}
-.hero-tag::before, .hero-tag::after{
-  content:""; position:absolute; left:50%; transform:translateX(-50%);
-  width:0; height:0;
-}
-.hero-tag::before{
-  bottom:-8px; border-left:7px solid transparent; border-right:7px solid transparent;
-}
-.hero-tag::after{
-  bottom:-5px; border-left:5px solid transparent; border-right:5px solid transparent;
-  border-top:6px solid var(--white);
-}
-.hero-tag-pink{ color:var(--green-deep); border:2px solid var(--green-deep); }
-.hero-tag-pink::before{ border-top:9px solid var(--green-deep); }
-.hero-tag-blue{ color:var(--accent-blue-deep); border:2px solid var(--accent-blue-deep); }
-.hero-tag-blue::before{ border-top:9px solid var(--accent-blue-deep); }
-
 .hero-catchcopy h2{
   margin:0; color:var(--white); font-weight:700;
   font-size:clamp(16px, 2.4vw, 24px); line-height:1.55;
@@ -455,8 +424,6 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   .hero-catchcopy{ top:52%; }
   .hero-catchcopy-inner{ padding:12px 16px; }
   .hero-catch-label{ font-size:13px; margin-bottom:4px; }
-  .hero-tags{ gap:6px; margin-bottom:7px; }
-  .hero-tag{ padding:4px 10px; font-size:10.5px; }
   .hero-catchcopy h2{ font-size:clamp(14px, 4vw, 17px); }
   .hero-badges{ gap:10px; margin-top:12px; }
   .hero-badge{ width:72px; gap:4px; }

@@ -230,15 +230,9 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 }
 
 /* ---------- Hero ---------- */
-/* The photo slideshow lives in its own rounded frame (.hero-photo-frame),
-   sized to 46% of .hero-layout's width. The text card that used to fill
-   the remaining space has been removed; .hero-media keeps flex-grow:0
-   so the frame stays the same size instead of stretching to fill the
-   freed-up space, leaving it blank on the right for now. */
-/* No vertical padding here — the global `section{ padding:64px 0 }` rule
-   already provides it; only horizontal max-width/gutter belongs here
-   (mirrors .container). */
-.hero{ background:var(--white); }
+/* The photo slideshow fills .hero-layout's full width in its own rounded
+   frame (.hero-photo-frame). */
+.hero{ background:var(--white); padding:24px 0; }
 .hero-layout{
   max-width:1320px; margin:0 auto; padding:40px 32px;
   display:flex; align-items:center; gap:40px;
@@ -286,6 +280,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 .hero-photo-dot.is-active{ width:20px; border-radius:4px; background:var(--green-deep); }
 
 @media (max-width:820px){
+  .hero{ padding:16px 0; }
   .hero-layout{ flex-direction:column; gap:20px; padding:28px 20px; }
   .hero-media{ flex:none; width:100%; }
   .hero-photo-frame{ border-radius:20px; min-height:0; aspect-ratio:4/3; }

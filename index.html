@@ -649,33 +649,61 @@
     // slide's is-active is removed immediately and the incoming slide's is
     // only added once the fade-out finishes (matching the CSS opacity
     // duration below) — sequential, not simultaneous, so the two photos
-    // never appear blended/overlapping mid-transition.
+    // never appear blended/overlapping mid-transition. Transitions are
+    // serialized (queued via pendingTarget) rather than cancel-and-restart:
+    // canceling a scheduled "add is-active" on every new click could drop
+    // it forever under rapid clicks, leaving `current` out of sync with
+    // what's actually on screen and letting two slides end up flagged
+    // is-active at once — the exact overlap this is meant to prevent.
     var slidesWrap = document.getElementById('heroSlides');
     var dots = document.querySelectorAll('#heroDots .hero-photo-dot');
     if (!slidesWrap || !dots.length) return;
 
     var slides = slidesWrap.querySelectorAll('.hero-slide');
     var current = 0;
+    var pendingTarget = null;
+    var transitioning = false;
     var autoplayTimer = null;
     var resumeTimer = null;
     var fadeInTimer = null;
     var FADE_MS = 550;
 
-    function setActive(i){
-      if (fadeInTimer){ clearTimeout(fadeInTimer); fadeInTimer = null; }
+    function updateDots(i){
+      dots.forEach(function(dot, idx){ dot.classList.toggle('is-active', idx === i); });
+    }
+
+    function runTransition(i){
+      transitioning = true;
       slides.forEach(function(slide, idx){
         if (idx !== i) slide.classList.remove('is-active');
       });
-      dots.forEach(function(dot, idx){ dot.classList.toggle('is-active', idx === i); });
       fadeInTimer = setTimeout(function(){
         slides[i].classList.add('is-active');
         fadeInTimer = null;
+        transitioning = false;
+        current = i;
+        if (pendingTarget !== null && pendingTarget !== current){
+          var next = pendingTarget;
+          pendingTarget = null;
+          runTransition(next);
+        } else {
+          pendingTarget = null;
+        }
       }, FADE_MS);
     }
 
+    function setActive(i){
+      updateDots(i);
+      if (transitioning){
+        pendingTarget = i;
+        return;
+      }
+      if (i === current) return;
+      runTransition(i);
+    }
+
     function goTo(i){
-      current = (i + slides.length) % slides.length;
-      setActive(current);
+      setActive((i + slides.length) % slides.length);
     }
 
     function startAutoplay(){

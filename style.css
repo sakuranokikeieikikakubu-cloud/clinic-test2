@@ -288,7 +288,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 @media (max-width:820px){
   .hero-layout{ flex-direction:column; gap:20px; padding:28px 20px; }
   .hero-media{ flex:none; width:100%; }
-  .hero-photo-frame{ border-radius:20px; min-height:0; }
+  .hero-photo-frame{ border-radius:20px; min-height:0; aspect-ratio:4/3; }
 }
 .nowrap{ white-space:nowrap; }
 

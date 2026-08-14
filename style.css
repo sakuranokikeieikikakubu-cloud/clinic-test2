@@ -264,10 +264,10 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   opacity:1; visibility:visible;
   transition:opacity .55s ease, visibility 0s linear 0s;
 }
-.hero-slide:nth-of-type(1) img{ object-position:center 25%; }
-.hero-slide:nth-of-type(2) img{ object-position:center 40%; }
-.hero-slide:nth-of-type(3) img{ object-position:68% center; }
-.hero-slide:nth-of-type(4) img{ object-position:center 8%; }
+.hero-slide:nth-of-type(1) img{ object-position:68% center; }
+.hero-slide:nth-of-type(2) img{ object-position:center 25%; }
+.hero-slide:nth-of-type(3) img{ object-position:center 8%; }
+.hero-slide:nth-of-type(4) img{ object-position:center 40%; }
 
 .hero-photo-dots{
   display:flex; justify-content:center; gap:8px;

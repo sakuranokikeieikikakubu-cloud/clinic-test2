@@ -230,13 +230,11 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 }
 
 /* ---------- Hero ---------- */
-/* Photo and copy are fully separate elements (not text-over-photo): the
-   photo slideshow lives in its own rounded frame (.hero-photo-frame),
-   and the clinic name/catchcopy/badges live in their own panel
-   (.hero-text) with a solid pale-pink background. .hero-layout just
-   flexes them side by side on PC and stacks them (photo, then text) on
-   mobile — same DOM order works for both, so no CSS `order` juggling
-   is needed. */
+/* The photo slideshow lives in its own rounded frame (.hero-photo-frame),
+   sized to 46% of .hero-layout's width. The text card that used to fill
+   the remaining space has been removed; .hero-media keeps flex-grow:0
+   so the frame stays the same size instead of stretching to fill the
+   freed-up space, leaving it blank on the right for now. */
 /* No vertical padding here — the global `section{ padding:64px 0 }` rule
    already provides it; only horizontal max-width/gutter belongs here
    (mirrors .container). */
@@ -248,7 +246,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   border-radius:32px;
   position:relative;
 }
-.hero-media{ flex:1 1 46%; min-width:0; }
+.hero-media{ flex:0 1 46%; min-width:0; }
 .hero-photo-frame{
   position:relative; overflow:hidden;
   border-radius:24px; aspect-ratio:5/4;
@@ -294,67 +292,8 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 }
 .hero-photo-dot.is-active{ width:20px; border-radius:4px; background:var(--green-deep); }
 
-/* Text panel: solid pale-pink card, plain dark type — no photo behind
-   it, so none of the white-text/text-shadow tricks the old overlay
-   version needed. */
-.hero-text{
-  flex:1 1 54%; min-width:0;
-  background:var(--white); border-radius:24px;
-  padding:36px 40px;
-  box-shadow:0 8px 20px rgba(0,0,0,.06);
-}
-.hero-catch-label{
-  font-size:15px; font-weight:700; color:var(--green-deep); letter-spacing:.03em;
-  margin-bottom:8px;
-}
-.hero-text h2{
-  margin:0; color:var(--text-heading); font-weight:700;
-  font-size:clamp(19px, 2vw, 26px); line-height:1.6;
-}
-/* Simple color-only emphasis (no circle/underline decoration). */
-.hero-highlight{ color:var(--green-deep); }
-
-/* Informational, not links — round icon badges rather than pill buttons,
-   no hover motion, no pointer cursor. */
-.hero-badges{
-  display:flex; flex-wrap:wrap; gap:20px;
-  margin-top:24px;
-}
-.hero-badge{
-  display:flex; flex-direction:column; align-items:center; gap:6px;
-  width:84px; cursor:default;
-}
-.hero-badge-circle{
-  width:54px; height:54px; flex:none; border-radius:50%;
-  background:var(--white);
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 4px 10px rgba(0,0,0,.1);
-}
-.hero-badge-circle i{ font-size:21px; }
-.hero-badge:nth-child(1) .hero-badge-circle i{ color:var(--green-deep); }
-.hero-badge:nth-child(2) .hero-badge-circle i{ color:var(--accent-blue-deep); }
-.hero-badge:nth-child(3) .hero-badge-circle i{ color:var(--gold-deep); }
-.hero-badge-label{
-  font-size:11px; font-weight:700; color:var(--text-body);
-  text-align:center; line-height:1.35;
-}
-
-/* Sakura petals and confetti triangles now decorate the photo frame
-   itself (good contrast against the photo, same as before) rather than
-   the full section — just 2 petals + 4 confetti, scaled down to suit
-   the smaller boxed frame instead of a full-bleed background. */
-.hero-sakura{
-  position:absolute; z-index:2; color:#f2a0b8;
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.2));
-}
-.hero-sakura-1{
-  top:14px; right:14px; width:52px; height:52px;
-  opacity:.4; transform:rotate(-12deg);
-}
-.hero-sakura-3{
-  bottom:14px; left:14px; width:44px; height:44px;
-  opacity:.38; transform:rotate(-25deg);
-}
+/* Confetti triangles decorate the photo frame itself (good contrast
+   against the photo). */
 .hero-confetti{
   position:absolute; z-index:2;
   filter:drop-shadow(0 2px 4px rgba(0,0,0,.18));
@@ -380,16 +319,6 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   .hero-layout{ flex-direction:column; gap:20px; padding:28px 20px; }
   .hero-media{ flex:none; width:100%; }
   .hero-photo-frame{ border-radius:20px; min-height:0; }
-  .hero-text{ width:100%; padding:22px 20px; border-radius:18px; }
-  .hero-catch-label{ font-size:13px; margin-bottom:5px; }
-  .hero-text h2{ font-size:clamp(16px, 4.2vw, 19px); }
-  .hero-badges{ gap:14px; margin-top:16px; }
-  .hero-badge{ width:72px; gap:4px; }
-  .hero-badge-circle{ width:44px; height:44px; }
-  .hero-badge-circle i{ font-size:16px; }
-  .hero-badge-label{ font-size:9.5px; }
-  .hero-sakura-1{ width:38px; height:38px; }
-  .hero-sakura-3{ width:32px; height:32px; }
 }
 .nowrap{ white-space:nowrap; }
 

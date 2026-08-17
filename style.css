@@ -6,23 +6,23 @@
      lighter, more decorative shade; --green-pale is the soft section tint.
      Var names are unchanged from the previous (blue) palette to avoid
      touching every rule that references them. */
-  --green-deep:   #ec1c64;
-  --green:        #ff86ac;
+  --green-deep:   #f05a8c;
+  --green:        #f7a9c4;
   --green-pale:   #ffe8f0;
-  --gold:         #ffc224;
-  --gold-deep:    #e2960a;
+  --gold:         #f5b93c;
+  --gold-deep:    #d9932a;
   --paper:        #fff8fa;
   --line:         #ffd6e3;
   --white:        #ffffff;
 
   /* Secondary accent colors — used deliberately in a handful of spots
      (badges, banners) so the palette doesn't read as all-pink. */
-  --accent-blue:      #38c6f4;
-  --accent-blue-deep: #0093d1;
+  --accent-blue:      #5abee1;
+  --accent-blue-deep: #3a9ec7;
 
   --yg:           var(--accent-blue-deep);
 
-  --text-heading: #2c5266;
+  --text-heading: #6e4a3a;
   --text-body:    #333333;
 }
 

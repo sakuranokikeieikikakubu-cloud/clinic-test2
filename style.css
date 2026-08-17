@@ -507,7 +507,7 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
 
 /* ---------- Service banners ---------- */
 .services{ background:var(--green-pale); }
-.svc-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,220px)); justify-content:center; gap:6px; }
+.svc-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,220px)); justify-content:center; gap:16px; }
 .svc-card{
   display:flex; align-items:center; justify-content:center;
   padding:4px;

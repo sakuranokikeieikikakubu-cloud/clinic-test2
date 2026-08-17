@@ -491,14 +491,14 @@ table.hours tbody th, table.hours tbody td{ font-size:11px; padding:7px 2px; }
    used to wrap onto several lines and cram/overlap inside the narrow
    day columns. */
 .dept-badge, .dept-staff, .dept-full{ display:none; }
-td.closed{ color:var(--text-body); font-weight:700; }
+td.closed{ color:var(--text-heading); font-weight:700; }
 .dept-symbol{
   display:block; font-size:20px; font-weight:700; line-height:1; color:var(--green-deep);
 }
 .dept-time{ display:block; font-size:7px; font-weight:700; margin-top:2px; white-space:nowrap; }
 .news-hours .dept-symbol{ font-size:17px; }
 .news-hours .dept-time{ font-size:6px; }
-td.closed .dept-symbol{ color:var(--text-body); }
+td.closed .dept-symbol{ color:var(--text-heading); }
 .hours-legend{
   display:inline-block; width:fit-content; font-size:12.5px; color:var(--text-body);
   line-height:1.9; margin-top:12px; background:#f7f7f7; border:1px solid var(--line); border-radius:8px; padding:12px 16px;

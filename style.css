@@ -538,8 +538,8 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
 .feature-row:last-child{ border-bottom:none; }
 .feature-row.rev .f-img{ order:2; }
 .f-img{
-  aspect-ratio:4/3; border-radius:12px; background:var(--green-pale);
-  width:100%; height:auto; object-fit:cover; display:block;
+  aspect-ratio:4/3;
+  width:100%; height:auto; object-fit:contain; display:block;
 }
 .f-no{ font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-size:12px; color:var(--gold); letter-spacing:.1em; margin-bottom:8px; }
 .f-title{ font-size:18px; color:var(--green-deep); margin-bottom:12px; }

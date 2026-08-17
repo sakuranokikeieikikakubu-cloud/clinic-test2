@@ -570,20 +570,17 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
   .symptoms .symptom-grid{ grid-template-columns:repeat(2, 1fr); }
 }
 a.symptom-tag{
-  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  display:inline-flex; align-items:center; justify-content:center;
   padding:10px 14px;
-  background:var(--white); border:1.5px solid var(--green-deep); border-radius:8px;
-  color:var(--green-deep); font-weight:700; cursor:pointer; text-align:center;
-  transition:background .15s, border-color .15s;
+  background:#fdeef2; border-radius:18px 6px 18px 6px;
+  color:#8a5a68; font-weight:700; cursor:pointer; text-align:center;
+  transition:background .15s;
 }
-a.symptom-tag::after{
-  content:"→"; font-size:14px; font-weight:700; line-height:1; color:var(--green-deep);
-}
-a.symptom-tag:hover{ background:var(--green-pale); border-color:var(--green-deep); }
+a.symptom-tag:nth-child(even){ border-radius:6px 18px 6px 18px; }
+a.symptom-tag:hover{ background:#fbdce6; }
 .sp-break{ display:none; }
 @media (max-width:600px){
-  a.symptom-tag{ font-size:12px; padding:9px 10px; gap:6px; }
-  a.symptom-tag::after{ font-size:13px; }
+  a.symptom-tag{ font-size:12px; padding:9px 10px; min-height:52px; display:flex; align-items:center; justify-content:center; }
   .sp-break{ display:inline; }
 }
 

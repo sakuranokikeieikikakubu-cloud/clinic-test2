@@ -172,10 +172,10 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif;
 }
 .mcta-btn i{ font-size:19px; }
-.mcta-web{ background:#4169e1; }
-.mcta-line{ background:#06c755; }
-.mcta-cowbell{ background:#DC8C55; }
-.mcta-tel{ background:#ff69b4; }
+.mcta-web{ background:rgba(130,190,225,.85); }
+.mcta-line{ background:rgba(120,175,120,.85); }
+.mcta-cowbell{ background:rgba(220,140,85,.85); }
+.mcta-tel{ background:rgba(240,150,175,.85); }
 
 .nav-toggle{
   display:none; flex-direction:column; justify-content:center; align-items:center;

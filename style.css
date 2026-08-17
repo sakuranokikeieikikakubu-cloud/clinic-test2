@@ -509,8 +509,10 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
 .services{ background:var(--green-pale); }
 .svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
 .svc-card{
-  display:block; background:var(--white); overflow:hidden; text-align:center;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--white); overflow:hidden;
   border:1px solid var(--line); border-radius:14px;
+  padding:18px;
   transition:transform .15s, box-shadow .15s;
   transform:translateZ(0);
   backface-visibility:hidden;
@@ -521,37 +523,11 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
 .svc-card:focus-visible{ outline:2px solid var(--green-deep); outline-offset:2px; }
 @media (hover:hover) and (pointer:fine){
   /* Real-mouse-only: touch browsers fire :hover on tap (and keep it "stuck"
-     until the next tap elsewhere), which briefly applied this transform and
-     revealed a hairline seam between .svc-photo and its gradient overlay. */
+     until the next tap elsewhere), which would otherwise apply this transform
+     after a tap and make it look stuck. */
   .svc-card:hover{ transform:translateY(-3px) translateZ(0); box-shadow:0 10px 24px rgba(30,60,45,.10); }
 }
-.svc-photo{
-  aspect-ratio:3/2; background-color:var(--green-pale);
-  background-size:cover; background-position:center;
-  position:relative;
-}
-.svc-photo::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(to bottom, rgba(255,255,255,0) 34%, var(--white) 86%);
-}
-.svc-photo.internal{ background-image:url("images/card-internal.jpg"); }
-.svc-photo.surgery{ background-image:url("images/card-surgery.jpg"); }
-.svc-photo.cardiology{ background-image:url("images/card-cardiology.jpg"); }
-.svc-photo.home-visit{ background-image:url("images/card-home-visit.jpg"); }
-.svc-photo.house-call{ background-image:url("images/card-house-call.jpg"); }
-.svc-photo.rehab{ background-image:url("images/card-rehab.jpg"); }
-.svc-body{ position:relative; z-index:2; margin-top:-34px; padding:0 14px 16px; }
-.svc-card .ico{
-  display:flex; align-items:center; justify-content:center;
-  width:44px; height:44px; margin:0 auto 8px;
-  border-radius:50%; font-size:21px; color:var(--white);
-  box-shadow:0 4px 10px rgba(0,0,0,.14);
-}
-.svc-card:nth-child(3n+1) .ico{ background:var(--green-deep); }
-.svc-card:nth-child(3n+2) .ico{ background:var(--accent-blue-deep); }
-.svc-card:nth-child(3n+3) .ico{ background:var(--gold-deep); }
-.svc-card h3{ font-size:23px; font-weight:700; margin-bottom:4px; color:var(--text-heading); }
-.svc-card span{ font-size:12px; color:var(--green); }
+.svc-icon{ width:100%; max-width:220px; aspect-ratio:1/1; object-fit:contain; display:block; }
 
 /* ---------- Features (5 reasons) ---------- */
 .feature-row{
@@ -785,7 +761,6 @@ footer{ background:#ffb6c1; color:#5c2a3a; padding:56px 0 0; }
   .nh-grid, .greet-grid, .foot-grid{ grid-template-columns:1fr; }
   .foot-grid .btn-cta{ margin-top:6px; }
   .svc-grid{ grid-template-columns:repeat(2,1fr); }
-  .svc-card h3{ font-size:18px; }
   .blog-grid{ grid-template-columns:repeat(2,1fr); }
   .sisters-grid{ grid-template-columns:repeat(2,1fr); }
   .feature-carousel{

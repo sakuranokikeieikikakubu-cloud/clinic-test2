@@ -507,10 +507,10 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
 
 /* ---------- Service banners ---------- */
 .services{ background:var(--green-pale); }
-.svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
 .svc-card{
   display:flex; align-items:center; justify-content:center;
-  padding:18px;
+  padding:6px;
   transition:transform .15s;
   transform:translateZ(0);
   backface-visibility:hidden;
@@ -525,7 +525,10 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
      after a tap and make it look stuck. */
   .svc-card:hover{ transform:translateY(-3px) translateZ(0); }
 }
-.svc-icon{ width:100%; max-width:220px; aspect-ratio:1/1; object-fit:contain; display:block; }
+.svc-icon{
+  width:100%; max-width:220px; aspect-ratio:1/1; object-fit:contain; display:block;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.12));
+}
 
 /* ---------- Features (5 reasons) ---------- */
 .feature-row{

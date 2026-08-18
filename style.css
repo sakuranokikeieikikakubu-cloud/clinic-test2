@@ -428,12 +428,12 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 
 .btn-cta{
   display:inline-flex; align-items:center; gap:8px;
-  margin-top:20px; background:var(--green-deep); color:var(--white);
+  margin-top:20px; background:#F096AF; color:var(--white);
   font-size:14px; font-weight:700; padding:16px 32px; border-radius:999px;
-  box-shadow:0 8px 20px rgba(236,28,100,.28);
+  box-shadow:0 8px 20px rgba(240,150,175,.28);
   transition:background .15s, transform .15s, box-shadow .15s;
 }
-.btn-cta:hover{ background:var(--green); transform:translateY(-2px); box-shadow:0 12px 26px rgba(236,28,100,.34); }
+.btn-cta:hover{ background:#e87c9a; transform:translateY(-2px); box-shadow:0 12px 26px rgba(240,150,175,.34); }
 .btn-cta i{ font-size:16px; }
 
 /* ---------- Section shell ---------- */
@@ -728,7 +728,7 @@ a.symptom-tag:hover{ background:#fbdce6; }
 /* ---------- Footer ---------- */
 /* Light pink background — text/icons switch to a dark pink for contrast
    (previously white-on-deep-pink; the deep-pink fill is gone). */
-footer{ background:#ffb6c1; color:#5c2a3a; padding:56px 0 0; }
+footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
 .foot-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:44px; padding-bottom:36px; border-bottom:1px solid rgba(92,42,58,.18); }
 .foot-logo{
   display:flex; align-items:center; gap:8px;

@@ -675,6 +675,19 @@ a.symptom-tag:hover{ background:#fbdce6; }
 }
 .doc-list a:hover{ opacity:.75; }
 .doc-list a i{ font-size:17px; flex:none; }
+
+.doc-subgroups{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px; }
+.doc-subgroup{
+  background:var(--white); border:1px solid var(--line); border-radius:12px; padding:16px 18px;
+}
+.doc-subgroup .doc-list{ margin-top:0; }
+.doc-subgroup-title{
+  display:inline-block; font-size:12px; font-weight:700; color:var(--green-deep);
+  background:var(--green-pale); border-radius:999px; padding:3px 12px; margin-bottom:12px;
+}
+@media (max-width:600px){
+  .doc-subgroups{ grid-template-columns:1fr; }
+}
 .emphasis-line{
   background:var(--green-pale); border-left:4px solid var(--green-deep); border-radius:0 8px 8px 0;
   padding:14px 18px; font-size:14px; font-weight:700; color:var(--green-deep);

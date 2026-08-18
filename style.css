@@ -661,6 +661,20 @@ a.symptom-tag:hover{ background:#fbdce6; }
 .alt-bg .notice-box{
   background:var(--white); border:2px solid var(--green-deep);
 }
+.notice-box a{ color:inherit; text-decoration:underline; text-underline-offset:3px; }
+.notice-box a:hover{ opacity:.75; }
+.notice-box a i{ font-size:13px; }
+
+.doc-list{ list-style:none; margin:12px 0 0; padding:0; }
+.doc-list li{ margin-bottom:10px; }
+.doc-list li:last-child{ margin-bottom:0; }
+.doc-list a{
+  display:inline-flex; align-items:center; gap:8px;
+  color:var(--green-deep); font-weight:700; font-size:14px;
+  text-decoration:underline; text-underline-offset:3px;
+}
+.doc-list a:hover{ opacity:.75; }
+.doc-list a i{ font-size:17px; flex:none; }
 .emphasis-line{
   background:var(--green-pale); border-left:4px solid var(--green-deep); border-radius:0 8px 8px 0;
   padding:14px 18px; font-size:14px; font-weight:700; color:var(--green-deep);
@@ -884,7 +898,7 @@ footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
 .page-title.cowbell-theme .eyebrow{ color:#8a7328; }
 
 .page-title.cowbell-theme .deco-tri{
-  position:absolute; width:0; height:0; opacity:.5; pointer-events:none; border-style:solid;
+  position:absolute; width:0; height:0; opacity:.75; pointer-events:none; border-style:solid;
 }
 .page-title.cowbell-theme .deco-tri--1{
   top:16px; left:7%; border-width:0 13px 20px 13px;
@@ -898,8 +912,16 @@ footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
   top:20px; right:9%; border-width:0 11px 18px 11px;
   border-color:transparent transparent #78AF78 transparent; transform:rotate(16deg);
 }
+.page-title.cowbell-theme .deco-tri--4{
+  bottom:18px; right:24%; border-width:0 10px 16px 10px;
+  border-color:transparent transparent #A582C3 transparent; transform:rotate(-18deg);
+}
+.page-title.cowbell-theme .deco-tri--5{
+  top:14px; left:38%; border-width:0 8px 14px 8px;
+  border-color:transparent transparent #DC8C55 transparent; transform:rotate(20deg);
+}
 @media (max-width:600px){
-  .page-title.cowbell-theme .deco-tri--2{ display:none; }
+  .page-title.cowbell-theme .deco-tri--5{ display:none; }
 }
 
 .cowbell-hero-photo{

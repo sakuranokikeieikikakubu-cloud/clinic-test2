@@ -612,6 +612,7 @@ a.symptom-tag:hover{ background:#fbdce6; }
 .jump-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px; }
 .jump-btn{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
+  min-height:56px;
   background:var(--white); border:1px solid var(--line); border-radius:10px;
   padding:15px 20px; font-size:14px; font-weight:700; color:var(--text-heading);
   transition:border-color .15s, color .15s, background .15s;
@@ -899,12 +900,11 @@ footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
 }
 
 .cowbell-hero-photo{
-  max-width:65%; margin:0 auto 28px; border-radius:20px; overflow:hidden;
-  border:4px solid var(--green); box-shadow:0 10px 28px rgba(179,89,0,.18);
+  max-width:65%; margin:0 auto 28px;
 }
 .cowbell-hero-photo img{
-  display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover;
+  display:block; width:100%; height:auto;
 }
 @media (max-width:600px){
-  .cowbell-hero-photo{ max-width:100%; border-width:3px; border-radius:16px; margin-bottom:22px; }
+  .cowbell-hero-photo{ max-width:100%; margin-bottom:22px; }
 }

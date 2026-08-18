@@ -610,6 +610,9 @@ a.symptom-tag:hover{ background:#fbdce6; }
 
 /* ---------- Jump nav buttons ---------- */
 .jump-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px; }
+@media (max-width:600px){
+  .jump-grid{ grid-template-columns:1fr; }
+}
 .jump-btn{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
   min-height:56px;

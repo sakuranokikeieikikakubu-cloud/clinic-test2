@@ -150,12 +150,13 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 .side-fab-item:hover{ transform:translateX(-4px); box-shadow:0 8px 20px rgba(0,0,0,.26); }
 .fab-reserve{ background:#82BEE1; }
 .fab-line{ background:#78AF78; }
-.fab-cowbell{ background:#DC8C55; }
 .fab-tel{ background:#F096AF; }
+.fab-cowbell{ background:#FFD966; color:#6e4a3a; }
 .fab-reserve:hover{ background:#6898B4; }
 .fab-line:hover{ background:#608C60; }
-.fab-cowbell:hover{ background:#B07044; }
 .fab-tel:hover{ background:#C0788C; }
+.fab-cowbell:hover{ background:#f0c94d; }
+.side-fab-divider{ align-self:center; width:38px; height:1px; margin:2px 0; background:rgba(0,0,0,.15); }
 @media (max-width:1179px){
   .side-fab{ display:none; }
 }
@@ -174,8 +175,9 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 .mcta-btn i{ font-size:19px; }
 .mcta-web{ background:rgba(130,190,225,.95); }
 .mcta-line{ background:rgba(120,175,120,.95); }
-.mcta-cowbell{ background:rgba(220,140,85,.95); }
 .mcta-tel{ background:rgba(240,150,175,.95); }
+.mcta-cowbell{ background:rgba(255,217,102,.95); color:#6e4a3a; }
+.mcta-divider{ flex:none; width:2px; align-self:stretch; margin:10px 0; background:rgba(255,255,255,.55); }
 
 .nav-toggle{
   display:none; flex-direction:column; justify-content:center; align-items:center;
@@ -861,15 +863,40 @@ footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
    colors through var(), so nothing else needs to change. The shared
    header/side-fab/footer/mobile-cta-bar sit outside this class and
    stay on the site's pink palette. */
+/* --green-deep drives body text/links/borders/small icon fills throughout
+   the shared component CSS (headings, jump-btn, schedule-table, notice
+   boxes, etc.) — not just backgrounds. #FFD966 there would read as
+   near-invisible pale text, so this stays a darker, readable gold; the
+   literal bright lemon (#FFD966/#FFE699/#FFF9E8) is reserved for actual
+   panel fills (page-title band below, sidebar/mobile-bar buttons). */
 .cowbell-theme{
-  --green-deep: #e67e00;
-  --green:      #ffa500;
-  --green-pale: #fff2e0;
+  --green-deep: #8c6212;
+  --green:      #FFE699;
+  --green-pale: #FFF9E8;
   --line:       #ffdba3;
   --paper:      #fffaf2;
 }
-.page-title.cowbell-theme .eyebrow{ color:#fff2df; }
-.page-title.cowbell-theme{ background:#DC8C55; }
+.page-title.cowbell-theme{ background:#FFD966; color:#6e4a3a; position:relative; overflow:hidden; }
+.page-title.cowbell-theme .eyebrow{ color:#8a7328; }
+
+.page-title.cowbell-theme .deco-tri{
+  position:absolute; width:0; height:0; opacity:.5; pointer-events:none; border-style:solid;
+}
+.page-title.cowbell-theme .deco-tri--1{
+  top:16px; left:7%; border-width:0 13px 20px 13px;
+  border-color:transparent transparent #F096AF transparent; transform:rotate(-14deg);
+}
+.page-title.cowbell-theme .deco-tri--2{
+  bottom:14px; left:22%; border-width:0 9px 15px 9px;
+  border-color:transparent transparent #82BEE1 transparent; transform:rotate(10deg);
+}
+.page-title.cowbell-theme .deco-tri--3{
+  top:20px; right:9%; border-width:0 11px 18px 11px;
+  border-color:transparent transparent #78AF78 transparent; transform:rotate(16deg);
+}
+@media (max-width:600px){
+  .page-title.cowbell-theme .deco-tri--2{ display:none; }
+}
 
 .cowbell-hero-photo{
   max-width:65%; margin:0 auto 28px; border-radius:20px; overflow:hidden;

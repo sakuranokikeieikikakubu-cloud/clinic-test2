@@ -778,7 +778,7 @@ footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
 }
 .foot-leaf{ width:40px; height:40px; flex:none; object-fit:contain; }
 .foot-logo-text{ display:flex; flex-direction:column; align-items:flex-start; }
-.foot-org-name{ font-family:"M PLUS Rounded 1c","Noto Sans JP",sans-serif; font-size:11px; font-weight:400; color:#6b3d48; letter-spacing:.03em; margin:0 0 2px; padding:0; text-indent:0; }
+.foot-org-name{ font-family:"M PLUS Rounded 1c","Noto Sans JP",sans-serif; font-size:11px; font-weight:400; color:#6b3d48; letter-spacing:.03em; margin:0 0 -2px; padding:0; text-indent:0; }
 .foot-clinic-name{ font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; font-size:19px; color:#5c2a3a; margin:0; padding:0; text-indent:0; }
 .foot-hours{ font-size:13px; margin:14px 0; }
 .foot-hours p{ margin-bottom:2px; }

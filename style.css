@@ -342,23 +342,27 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 
 /* ---------- Career / schedule tables ---------- */
 /* ---------- Career timeline (院長略歴) ---------- */
-.timeline{ margin-top:16px; }
-.timeline-item{ position:relative; padding-left:28px; padding-bottom:22px; }
+.timeline{ margin-top:16px; font-family:"M PLUS Rounded 1c", "Noto Sans JP", sans-serif; }
+.timeline-item{ position:relative; padding-left:34px; padding-bottom:26px; }
 .timeline-item:last-child{ padding-bottom:0; }
 .timeline-item::before{
-  content:""; position:absolute; left:0; top:3px; width:12px; height:12px; box-sizing:border-box;
-  border-radius:50%; background:var(--white); border:2px solid var(--green-deep); z-index:1;
+  content:""; position:absolute; left:0; top:0; width:20px; height:20px; z-index:1;
+  background-repeat:no-repeat; background-size:20px 20px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='%23F096AF'%3E%3Cellipse cx='10' cy='4' rx='3' ry='5'/%3E%3Cellipse cx='10' cy='4' rx='3' ry='5' transform='rotate(72 10 10)'/%3E%3Cellipse cx='10' cy='4' rx='3' ry='5' transform='rotate(144 10 10)'/%3E%3Cellipse cx='10' cy='4' rx='3' ry='5' transform='rotate(216 10 10)'/%3E%3Cellipse cx='10' cy='4' rx='3' ry='5' transform='rotate(288 10 10)'/%3E%3C/g%3E%3Ccircle cx='10' cy='10' r='3' fill='%23fff'/%3E%3C/svg%3E");
 }
 .timeline-item::after{
-  content:""; position:absolute; left:5px; top:3px; bottom:-3px; width:2px;
-  background:var(--green-deep); z-index:0;
+  content:""; position:absolute; left:9px; top:20px; bottom:-6px;
+  border-left:2px dashed #f7a9c4; z-index:0;
 }
 .timeline-item:last-child::after{ content:none; }
-.timeline-year{ font-size:13px; font-weight:700; color:var(--green-deep); margin-bottom:4px; }
-.timeline-desc{ font-size:14px; color:var(--text-body); }
+.timeline-year{
+  display:inline-block; font-size:13px; font-weight:700; color:#F096AF;
+  background:#FDECF1; border-radius:999px; padding:6px 16px; margin-bottom:8px;
+}
+.timeline-desc{ font-size:14px; color:#333333; }
 @media (max-width:600px){
-  .timeline-item{ padding-bottom:14px; }
-  .timeline-year{ margin-bottom:2px; }
+  .timeline-item{ padding-bottom:18px; }
+  .timeline-year{ margin-bottom:6px; }
 }
 .timeline-toggle-wrap{ display:none; }
 .timeline-toggle{

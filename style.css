@@ -465,9 +465,9 @@ section{ padding:64px 0; scroll-margin-top:84px; }
   width:26px; height:26px; margin-right:8px; flex-shrink:0;
   border-radius:50%; color:var(--white); font-size:14px;
 }
-.head-ico-pink{ background:var(--green-deep); }
-.head-ico-blue{ background:var(--accent-blue-deep); }
-.head-ico-gold{ background:var(--gold-deep); }
+.head-ico-pink{ background:#F096AF; }
+.head-ico-blue{ background:#82BEE1; }
+.head-ico-gold{ background:#D9B73C; }
 .news-all-link{
   display:inline-block; font-size:11px; font-weight:500; color:var(--green-deep);
   border:1px solid var(--green-deep); border-radius:999px; padding:3px 12px; white-space:nowrap;

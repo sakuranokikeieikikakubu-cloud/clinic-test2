@@ -501,12 +501,8 @@ td.closed{ color:var(--text-heading); font-weight:700; }
 .dept-symbol{
   display:block; font-size:20px; font-weight:700; line-height:1; color:var(--green-deep);
 }
-/* "◆"(訪問診療のみ)は塗りつぶし記号で○△より視覚的に大きく・重く見えるため、
-   ○△と並んだときの見た目のバランスを取るためにサイズと太さを個別に調整。 */
-.dept-symbol--visit{ font-size:16px; font-weight:400; }
 .dept-time{ display:block; font-size:7px; font-weight:700; margin-top:2px; white-space:nowrap; }
 .news-hours .dept-symbol{ font-size:17px; }
-.news-hours .dept-symbol--visit{ font-size:14px; }
 .news-hours .dept-time{ font-size:6px; }
 td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
 .hours-legend{
@@ -876,7 +872,6 @@ footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
 @media (max-width:480px){
   table.hours tbody td{ padding:8px 2px; }
   .dept-symbol{ font-size:17px; }
-  .dept-symbol--visit{ font-size:13px; }
   .dept-time{ font-size:6px; letter-spacing:-.3px; }
 
   .sisters-grid{ grid-template-columns:1fr; }

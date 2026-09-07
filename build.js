@@ -170,7 +170,16 @@ function main() {
     const filePath = path.join(ROOT, file);
     const original = fs.readFileSync(filePath, 'utf8');
 
-    const header = matchLineEndings(headerPartial, original);
+    let header = matchLineEndings(headerPartial, original);
+    // The header partial's clinic-name element is an <h1> for SEO, but only
+    // the top page should have it as the page's h1 — every other page has
+    // its own page-specific h1 (e.g. "医師紹介"), so there the logo element
+    // is downgraded to a <p> to keep exactly one h1 per page.
+    if (file !== 'index.html') {
+      header = header
+        .replace('<h1 class="logo-text">', '<p class="logo-text">')
+        .replace('</h1>', '</p>');
+    }
     const footer = matchLineEndings(footerPartial, original);
     const navScript = matchLineEndings(navScriptPartial, original);
     const structuredData = matchLineEndings(structuredDataPartial, original);

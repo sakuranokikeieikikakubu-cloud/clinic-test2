@@ -17,7 +17,7 @@
 - [トップページ](https://sakuranokikeieikikakubu-cloud.github.io/clinic-test2/index.html): クリニックの概要、症状・疾患から探すページへの入り口
 - [診療案内](https://sakuranokikeieikikakubu-cloud.github.io/clinic-test2/medical.html): 小児科・内科・アレルギー科・整形外科・精神科・泌尿器科・皮膚科の診療内容
 - [在宅医療](https://sakuranokikeieikikakubu-cloud.github.io/clinic-test2/home-medical.html): 訪問診療・往診の案内、対応エリア
-- [カウベルキッズ(病児保育)](https://sakuranokikeieikikakubu-cloud.github.io/clinic-test2/cowbell-kids.html): 病児保育の対象者・利用時間・料金・送迎サービス・予約について
+- [カウベルキッズ(病児・病後児保育)](https://sakuranokikeieikikakubu-cloud.github.io/clinic-test2/cowbell-kids.html): 病児保育の対象者・利用時間・料金・送迎サービス・予約について
 - [院内紹介](https://sakuranokikeieikikakubu-cloud.github.io/clinic-test2/clinic.html): 医院の設備・雰囲気、当院の取り組み
 - [医師紹介](https://sakuranokikeieikikakubu-cloud.github.io/clinic-test2/doctor.html): 院長略歴、非常勤医師の診療日
 - [アクセス・診療時間](https://sakuranokikeieikikakubu-cloud.github.io/clinic-test2/access.html): 診療時間、休診日、駐車場、地図

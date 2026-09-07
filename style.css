@@ -399,6 +399,13 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   }
   .schedule-table td:last-child{ font-size:13px; line-height:1.8; }
 }
+@media (min-width:601px){
+  /* PC only: the reservation-hours table (予約区分/受付時間) has just two
+     short columns, so left unconstrained it stretches the full container
+     width. Scoped to #reservation so other schedule-table uses (fees,
+     etc.) are unaffected. */
+  #reservation .schedule-table{ max-width:480px; }
+}
 
 /* ---------- Blog list ---------- */
 .blog-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }

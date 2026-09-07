@@ -513,9 +513,10 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
 
 /* ---------- Service banners ---------- */
 .services{ background:var(--green-pale); }
-.svc-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,220px)); justify-content:center; gap:16px; }
+.svc-grid{ display:flex; flex-wrap:wrap; justify-content:center; gap:16px; max-width:692px; margin:0 auto; }
 .svc-card{
   display:flex; align-items:center; justify-content:center;
+  flex:0 1 220px; max-width:220px;
   padding:4px;
   transition:transform .15s;
   transform:translateZ(0);
@@ -614,6 +615,7 @@ a.symptom-tag:hover{ background:#fbdce6; }
 
 /* ---------- Jump nav buttons ---------- */
 .jump-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px; }
+.jump-grid > :last-child:nth-child(odd){ grid-column:1 / -1; }
 @media (max-width:600px){
   .jump-grid{ grid-template-columns:1fr; }
 }
@@ -798,7 +800,7 @@ footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
   .greet-grid{ gap:8px; }
   .foot-grid .btn-cta{ margin-top:6px; }
   .foot-clinic-name{ font-size:16px; }
-  .svc-grid{ grid-template-columns:repeat(2,minmax(0,220px)); }
+  .svc-card{ flex-basis:calc(50% - 8px); }
   .blog-grid{ grid-template-columns:repeat(2,1fr); }
   .sisters-grid{ grid-template-columns:repeat(2,1fr); }
   .feature-carousel{

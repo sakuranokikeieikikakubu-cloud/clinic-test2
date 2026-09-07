@@ -952,3 +952,8 @@ footer{ background:#fde4ea; color:#5c2a3a; padding:56px 0 0; }
 @media (max-width:600px){
   .cowbell-hero-photo{ max-width:100%; margin-bottom:22px; }
 }
+
+.visually-hidden{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}

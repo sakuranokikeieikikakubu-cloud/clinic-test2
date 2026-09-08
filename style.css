@@ -249,6 +249,14 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
   min-height:280px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
+/* .hero-photo-slides fills the frame at z-index:0 and would otherwise paint
+   over (hide) an inset box-shadow placed directly on .hero-photo-frame, so
+   the inward vignette is drawn as a pseudo-element above it instead. */
+.hero-photo-frame::after{
+  content:""; position:absolute; inset:0; z-index:1;
+  border-radius:inherit; pointer-events:none;
+  box-shadow:inset 0 0 40px 10px rgba(0,0,0,.08);
+}
 .hero-photo-slides{ position:absolute; inset:0; z-index:0; }
 /* Sequential fade (JS removes .is-active from the outgoing slide and only
    adds it to the incoming one after the fade-out finishes — see the

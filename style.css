@@ -697,6 +697,9 @@ a.symptom-tag:hover{ background:#fbdce6; }
 .notice-box a{ color:inherit; text-decoration:underline; text-underline-offset:3px; }
 .notice-box a:hover{ opacity:.75; }
 .notice-box a i{ font-size:13px; }
+@media (min-width:601px){
+  .notice-box--narrow{ margin:0 auto 28px; max-width:420px; }
+}
 
 .doc-list{ list-style:none; margin:12px 0 0; padding:0; }
 .doc-list li{ margin-bottom:10px; }

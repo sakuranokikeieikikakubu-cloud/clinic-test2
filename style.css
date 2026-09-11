@@ -699,12 +699,14 @@ a.symptom-tag:hover{ background:#fbdce6; }
 .initiative-card .article-body li{ margin-bottom:12px; line-height:1.85; }
 .initiative-card .article-body li:last-child{ margin-bottom:0; }
 
+summary{ list-style:none; }
+summary::-webkit-details-marker{ display:none; }
+summary::marker{ content:""; }
+
 .initiative-card > summary{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
-  list-style:none; cursor:pointer;
+  cursor:pointer;
 }
-.initiative-card > summary::-webkit-details-marker{ display:none; }
-.initiative-card > summary::marker{ content:""; }
 .initiative-card > summary h3{ margin:0; }
 .initiative-card .accordion-arrow{
   flex:none; font-size:18px; color:var(--green-deep); transition:transform .2s;
@@ -714,7 +716,6 @@ a.symptom-tag:hover{ background:#fbdce6; }
 @media (min-width:821px){
   .initiative-card > summary{ cursor:default; pointer-events:none; }
   .initiative-card .accordion-arrow{ display:none; }
-  .initiative-card .article-body{ display:block !important; }
 }
 
 /* ---------- Notice box / emphasis line ---------- */

@@ -212,7 +212,7 @@
   <div class="container">
     <h2>当院の取り組みについて</h2>
     <div class="initiative-grid">
-      <details class="initiative-card" id="family-doctor" open>
+      <details class="initiative-card" id="family-doctor">
         <summary><h3>かかりつけ医としての取り組み</h3><i class="ti ti-chevron-down accordion-arrow" aria-hidden="true"></i></summary>
         <div class="article-body">
           <ul>
@@ -224,7 +224,7 @@
         </div>
       </details>
 
-      <details class="initiative-card" id="medical-dx" open>
+      <details class="initiative-card" id="medical-dx">
         <summary><h3>医療DX・システムについて</h3><i class="ti ti-chevron-down accordion-arrow" aria-hidden="true"></i></summary>
         <div class="article-body">
           <ul>
@@ -235,7 +235,7 @@
         </div>
       </details>
 
-      <details class="initiative-card" id="medication" open>
+      <details class="initiative-card" id="medication">
         <summary><h3>お薬の処方について</h3><i class="ti ti-chevron-down accordion-arrow" aria-hidden="true"></i></summary>
         <div class="article-body">
           <ul>
@@ -245,7 +245,7 @@
         </div>
       </details>
 
-      <details class="initiative-card" id="visit-notes" open>
+      <details class="initiative-card" id="visit-notes">
         <summary><h3>ご受診にあたって</h3><i class="ti ti-chevron-down accordion-arrow" aria-hidden="true"></i></summary>
         <div class="article-body">
           <ul>
@@ -361,6 +361,37 @@
         link.addEventListener('click', closeMenu);
       }
     });
+  })();
+</script>
+
+<script>
+  // Initiatives accordion (#initiatives): tap-to-open on narrow screens only.
+  // At PC widths the cards must always read as fully expanded, so the
+  // native <details> open state is force-synced from JS rather than left to
+  // the user, and re-forced open if something (e.g. keyboard toggle) closes
+  // one while still at a PC width.
+  (function(){
+    var cards = document.querySelectorAll('.initiative-card');
+    var mq = window.matchMedia('(min-width:821px)');
+
+    function syncOpenState(){
+      cards.forEach(function(card){
+        if (mq.matches){
+          card.setAttribute('open', '');
+        } else {
+          card.removeAttribute('open');
+        }
+      });
+    }
+
+    cards.forEach(function(card){
+      card.addEventListener('toggle', function(){
+        if (mq.matches && !card.open) card.open = true;
+      });
+    });
+
+    syncOpenState();
+    mq.addEventListener('change', syncOpenState);
   })();
 </script>
 

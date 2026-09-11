@@ -160,9 +160,14 @@ function main() {
   const structuredDataPartial = readPartial('structured-data.html');
   const sideFabPartial = readPartial('side-fab.html');
 
+  // admin-*.html pages (投稿管理画面) are standalone tools with their own
+  // markup and inline script — they don't include the shared
+  // header/footer/side-fab/structured-data/nav-toggle blocks, so they're
+  // excluded from partial syncing.
   const targetFiles = fs
     .readdirSync(ROOT)
-    .filter((f) => f.toLowerCase().endsWith('.html'));
+    .filter((f) => f.toLowerCase().endsWith('.html'))
+    .filter((f) => !f.toLowerCase().startsWith('admin-'));
 
   let changedCount = 0;
 

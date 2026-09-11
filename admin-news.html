@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>お知らせ投稿(管理画面)｜さくらのき米山ファミリークリニック</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="style.css">
+<style>
+  body{ background:var(--green-pale); }
+  .admin-topbar{
+    background:var(--white); border-bottom:1px solid var(--line);
+    padding:16px 20px; text-align:center;
+  }
+  .admin-topbar h1{
+    font-family:"M PLUS Rounded 1c","Noto Sans JP",sans-serif;
+    font-size:17px; color:var(--green-deep);
+  }
+  .admin-topbar p{ font-size:11px; color:var(--text-body); margin-top:4px; }
+  .admin-wrap{ max-width:640px; margin:0 auto; padding:32px 20px 64px; }
+  .admin-card{
+    background:var(--white); border:1px solid var(--line); border-radius:18px;
+    padding:32px 28px; box-shadow:0 8px 24px rgba(240,150,175,.12);
+  }
+  .admin-card h2{
+    font-size:18px; color:var(--green-deep); margin-bottom:22px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .form-group{ margin-bottom:22px; }
+  .form-group label{
+    display:block; font-size:13px; font-weight:700; color:var(--text-heading);
+    margin-bottom:8px;
+  }
+  .form-group .hint{ font-weight:400; font-size:11px; color:var(--green); margin-left:6px; }
+  .form-control{
+    width:100%; font-family:inherit; font-size:14px; color:var(--text-body);
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    padding:11px 14px; transition:border-color .15s;
+  }
+  .form-control:focus{ outline:none; border-color:var(--green-deep); }
+  textarea.form-control{ resize:vertical; min-height:140px; line-height:1.8; }
+  input[type="file"].form-control{ padding:9px 12px; background:var(--white); cursor:pointer; }
+  .image-preview{
+    margin-top:12px; display:none; border:1px dashed var(--line); border-radius:10px;
+    padding:10px; background:var(--paper);
+  }
+  .image-preview img{ max-height:220px; border-radius:8px; margin:0 auto; }
+  .image-preview.has-image{ display:block; text-align:center; }
+  .admin-submit{
+    width:100%; justify-content:center; margin-top:6px; border:none; cursor:pointer;
+    font-family:inherit;
+  }
+  .preview-panel{
+    margin-top:28px; background:var(--green-pale); border:2px dashed var(--green);
+    border-radius:14px; padding:24px 22px;
+  }
+  .preview-panel-label{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11px; font-weight:700; color:var(--green-deep);
+    background:var(--white); border-radius:999px; padding:4px 12px; margin-bottom:14px;
+  }
+  .preview-news-date{ font-size:12px; font-weight:700; color:var(--green-deep); margin-bottom:8px; }
+  .preview-news-title{ font-size:16px; color:var(--text-heading); margin-bottom:12px; }
+  .preview-news-body{ font-size:13px; color:var(--text-body); line-height:1.9; white-space:pre-wrap; margin-bottom:14px; }
+  .preview-news-body:empty{ display:none; }
+  .preview-news-img{ max-width:100%; border-radius:10px; display:block; }
+  .back-to-form{ display:block; text-align:center; margin-top:10px; font-size:12px; }
+</style>
+</head>
+<body>
+
+<div class="test-banner">これは投稿管理画面のテスト表示です。入力内容はサーバーへ保存されません(見た目・動作確認用)。</div>
+
+<div class="admin-topbar">
+  <h1><i class="ti ti-speakerphone"></i> お知らせ投稿画面</h1>
+  <p>患者さん向けページからはリンクされていない、管理者専用のテストページです</p>
+</div>
+
+<div class="admin-wrap">
+  <div class="admin-card">
+    <h2><i class="ti ti-edit"></i>新規お知らせを作成</h2>
+
+    <form id="newsForm">
+      <div class="form-group">
+        <label for="newsDate">投稿日</label>
+        <input type="date" id="newsDate" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="newsTitle">タイトル</label>
+        <input type="text" id="newsTitle" class="form-control" placeholder="例:年末年始の休診についてのお知らせ" required>
+      </div>
+
+      <div class="form-group">
+        <label for="newsBody">本文</label>
+        <textarea id="newsBody" class="form-control" placeholder="お知らせの本文を入力してください" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="newsImage">画像アップロード <span class="hint">(任意・1枚まで)</span></label>
+        <input type="file" id="newsImage" class="form-control" accept="image/*">
+        <div class="image-preview" id="newsImagePreview">
+          <img id="newsImagePreviewImg" src="" alt="アップロード画像プレビュー">
+        </div>
+      </div>
+
+      <button type="submit" class="btn-cta admin-submit"><i class="ti ti-send"></i>投稿する</button>
+    </form>
+
+    <div class="preview-panel" id="previewPanel" hidden>
+      <span class="preview-panel-label"><i class="ti ti-eye"></i>投稿プレビュー(保存はされていません)</span>
+      <div class="preview-news-date" id="previewDate"></div>
+      <div class="preview-news-title" id="previewTitle"></div>
+      <div class="preview-news-body" id="previewBody"></div>
+      <img class="preview-news-img" id="previewImg" src="" alt="" hidden>
+      <a href="#newsForm" class="back-to-form" id="backToForm">↑ フォームに戻る</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const imageInput = document.getElementById('newsImage');
+  const imagePreview = document.getElementById('newsImagePreview');
+  const imagePreviewImg = document.getElementById('newsImagePreviewImg');
+
+  imageInput.addEventListener('change', function(){
+    const file = imageInput.files && imageInput.files[0];
+    if(!file){ imagePreview.classList.remove('has-image'); return; }
+    const reader = new FileReader();
+    reader.onload = function(e){
+      imagePreviewImg.src = e.target.result;
+      imagePreview.classList.add('has-image');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  const form = document.getElementById('newsForm');
+  const previewPanel = document.getElementById('previewPanel');
+  const previewDate = document.getElementById('previewDate');
+  const previewTitle = document.getElementById('previewTitle');
+  const previewBody = document.getElementById('previewBody');
+  const previewImg = document.getElementById('previewImg');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const dateVal = document.getElementById('newsDate').value;
+    previewDate.textContent = dateVal ? dateVal.replace(/-/g,'.') : '';
+    previewTitle.textContent = document.getElementById('newsTitle').value;
+    previewBody.textContent = document.getElementById('newsBody').value;
+
+    if(imagePreview.classList.contains('has-image')){
+      previewImg.src = imagePreviewImg.src;
+      previewImg.hidden = false;
+    } else {
+      previewImg.hidden = true;
+    }
+
+    previewPanel.hidden = false;
+    previewPanel.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+})();
+</script>
+</body>
+</html>

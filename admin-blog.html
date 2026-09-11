@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ブログ投稿(管理画面)｜さくらのき米山ファミリークリニック</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="style.css">
+<style>
+  body{ background:var(--green-pale); }
+  .admin-topbar{
+    background:var(--white); border-bottom:1px solid var(--line);
+    padding:16px 20px; text-align:center;
+  }
+  .admin-topbar h1{
+    font-family:"M PLUS Rounded 1c","Noto Sans JP",sans-serif;
+    font-size:17px; color:var(--green-deep);
+  }
+  .admin-topbar p{ font-size:11px; color:var(--text-body); margin-top:4px; }
+  .admin-wrap{ max-width:680px; margin:0 auto; padding:32px 20px 64px; }
+  .admin-card{
+    background:var(--white); border:1px solid var(--line); border-radius:18px;
+    padding:32px 28px; box-shadow:0 8px 24px rgba(240,150,175,.12);
+  }
+  .admin-card h2{
+    font-size:18px; color:var(--green-deep); margin-bottom:22px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .form-group{ margin-bottom:22px; }
+  .form-group label{
+    display:block; font-size:13px; font-weight:700; color:var(--text-heading);
+    margin-bottom:8px;
+  }
+  .form-group .hint{ font-weight:400; font-size:11px; color:var(--green); margin-left:6px; }
+  .form-control{
+    width:100%; font-family:inherit; font-size:14px; color:var(--text-body);
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    padding:11px 14px; transition:border-color .15s;
+  }
+  .form-control:focus{ outline:none; border-color:var(--green-deep); }
+  textarea.form-control{ resize:vertical; min-height:110px; line-height:1.8; }
+  select.form-control{ cursor:pointer; appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23F096AF' d='M5 7l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 14px center; padding-right:36px;
+  }
+  input[type="file"].form-control{ padding:9px 12px; background:var(--white); cursor:pointer; }
+  .image-preview{
+    margin-top:12px; display:none; border:1px dashed var(--line); border-radius:10px;
+    padding:10px; background:var(--paper);
+  }
+  .image-preview img{ max-height:220px; border-radius:8px; margin:0 auto; }
+  .image-preview.has-image{ display:block; text-align:center; }
+
+  /* ---- category select buttons ---- */
+  .category-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .category-option{ position:relative; }
+  .category-option input{ position:absolute; opacity:0; width:0; height:0; }
+  .category-option span{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    min-height:44px; padding:8px 6px; border-radius:10px; border:1.5px solid var(--line);
+    background:var(--paper); color:var(--text-heading); font-size:12px; font-weight:700;
+    transition:border-color .15s, background .15s, color .15s;
+  }
+  .category-option input:checked + span{
+    border-color:var(--green-deep); background:var(--green-pale); color:var(--green-deep);
+  }
+  @media (max-width:520px){
+    .category-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  /* ---- dynamic content blocks ---- */
+  .blocks-container{ display:flex; flex-direction:column; gap:16px; margin-bottom:16px; }
+  .content-block{
+    border:1px solid var(--line); border-radius:12px; padding:16px; background:var(--paper);
+    position:relative;
+  }
+  .block-header{
+    display:flex; align-items:center; gap:8px; margin-bottom:10px;
+  }
+  .block-no{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:24px; height:24px; border-radius:50%; background:var(--green-deep); color:var(--white);
+    font-size:12px; font-weight:700; flex:none;
+  }
+  .block-type{
+    font-size:12px; font-weight:700; color:var(--green-deep);
+    background:var(--white); border:1px solid var(--green-deep); border-radius:999px; padding:2px 10px;
+  }
+  .block-actions{ margin-left:auto; }
+  .block-remove{
+    border:none; background:none; color:var(--text-body); cursor:pointer; font-size:15px;
+    padding:2px 4px; line-height:1;
+  }
+  .block-remove:hover{ color:var(--green-deep); }
+  .block-order-hint{
+    font-size:11px; color:var(--text-body); margin-bottom:16px; background:var(--paper);
+    border:1px dashed var(--line); border-radius:8px; padding:8px 12px;
+  }
+  .block-btn-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
+  .block-add-btn{
+    flex:1 1 auto; display:inline-flex; align-items:center; justify-content:center; gap:6px;
+    font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+    padding:12px 16px; border-radius:999px; border:1.5px solid var(--green-deep);
+    background:var(--white); color:var(--green-deep); transition:background .15s, opacity .15s;
+  }
+  .block-add-btn:hover{ background:var(--green-pale); }
+  .block-add-btn:disabled{
+    opacity:.45; cursor:not-allowed; border-color:var(--line); color:var(--text-body);
+    background:var(--white);
+  }
+  .image-count-note{ font-size:11px; color:var(--green); }
+
+  .admin-submit{
+    width:100%; justify-content:center; margin-top:6px; border:none; cursor:pointer;
+    font-family:inherit;
+  }
+
+  .preview-panel{
+    margin-top:28px; background:var(--green-pale); border:2px dashed var(--green);
+    border-radius:14px; padding:24px 22px;
+  }
+  .preview-panel-label{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11px; font-weight:700; color:var(--green-deep);
+    background:var(--white); border-radius:999px; padding:4px 12px; margin-bottom:14px;
+  }
+  .preview-meta{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:10px; }
+  .preview-date{ font-size:12px; font-weight:700; color:var(--green-deep); }
+  .preview-category{
+    display:inline-block; font-size:10px; font-weight:700; color:var(--green-deep);
+    background:var(--white); border-radius:999px; padding:2px 10px;
+  }
+  .preview-title{ font-size:17px; color:var(--text-heading); margin-bottom:14px; }
+  .preview-main-img{ max-width:100%; border-radius:10px; display:block; margin-bottom:16px; }
+  .preview-block-text{ font-size:13px; color:var(--text-body); line-height:1.9; white-space:pre-wrap; margin-bottom:14px; }
+  .preview-block-img{ max-width:100%; border-radius:10px; display:block; margin-bottom:14px; }
+  .back-to-form{ display:block; text-align:center; margin-top:10px; font-size:12px; }
+</style>
+</head>
+<body>
+
+<div class="test-banner">これは投稿管理画面のテスト表示です。入力内容はサーバーへ保存されません(見た目・動作確認用)。</div>
+
+<div class="admin-topbar">
+  <h1><i class="ti ti-notebook"></i> ブログ投稿画面</h1>
+  <p>患者さん向けページからはリンクされていない、管理者専用のテストページです</p>
+</div>
+
+<div class="admin-wrap">
+  <div class="admin-card">
+    <h2><i class="ti ti-edit"></i>新規ブログ記事を作成</h2>
+
+    <form id="blogForm">
+      <div class="form-group">
+        <label for="blogDate">投稿日</label>
+        <input type="date" id="blogDate" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="blogTitle">タイトル</label>
+        <input type="text" id="blogTitle" class="form-control" placeholder="例:秋の感染症対策について" required>
+      </div>
+
+      <div class="form-group">
+        <label>カテゴリ</label>
+        <div class="category-grid" id="categoryGrid">
+          <!-- generated by JS -->
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="blogMainImage">メイン画像 <span class="hint">(記事TOP画像・1枚)</span></label>
+        <input type="file" id="blogMainImage" class="form-control" accept="image/*">
+        <div class="image-preview" id="mainImagePreview">
+          <img id="mainImagePreviewImg" src="" alt="メイン画像プレビュー">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>本文コンテンツ <span class="hint">(追加した順番がそのまま記事内の並び順になります)</span></label>
+        <div class="block-order-hint"><i class="ti ti-info-circle"></i> 下のボタンで「本文」「画像」ブロックを好きな順番に追加してください。</div>
+        <div class="blocks-container" id="blocksContainer"></div>
+        <div class="block-btn-row">
+          <button type="button" class="block-add-btn" id="addTextBtn"><i class="ti ti-plus"></i>本文を追加</button>
+          <button type="button" class="block-add-btn" id="addImageBtn"><i class="ti ti-photo-plus"></i>画像を追加</button>
+        </div>
+        <div class="image-count-note" id="imageCountNote">画像ブロック:0 / 5</div>
+      </div>
+
+      <button type="submit" class="btn-cta admin-submit"><i class="ti ti-send"></i>投稿する</button>
+    </form>
+
+    <div class="preview-panel" id="previewPanel" hidden>
+      <span class="preview-panel-label"><i class="ti ti-eye"></i>投稿プレビュー(保存はされていません)</span>
+      <div class="preview-meta">
+        <span class="preview-date" id="previewDate"></span>
+        <span class="preview-category" id="previewCategory"></span>
+      </div>
+      <div class="preview-title" id="previewTitle"></div>
+      <img class="preview-main-img" id="previewMainImg" src="" alt="" hidden>
+      <div id="previewBlocks"></div>
+      <a href="#blogForm" class="back-to-form" id="backToForm">↑ フォームに戻る</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const CATEGORIES = ["お知らせ","院長ブログ","スタッフブログ","健康コラム","病児保育(カウベルキッズ)","在宅医療・訪問診療","その他"];
+  const MAX_IMAGE_BLOCKS = 5;
+
+  const categoryGrid = document.getElementById('categoryGrid');
+  CATEGORIES.forEach(function(cat, i){
+    const label = document.createElement('label');
+    label.className = 'category-option';
+    label.innerHTML = '<input type="radio" name="category" value="' + cat + '"' + (i === 0 ? ' checked' : '') + '><span>' + cat + '</span>';
+    categoryGrid.appendChild(label);
+  });
+
+  function readAsDataURL(file, callback){
+    const reader = new FileReader();
+    reader.onload = function(e){ callback(e.target.result); };
+    reader.readAsDataURL(file);
+  }
+
+  const mainImageInput = document.getElementById('blogMainImage');
+  const mainImagePreview = document.getElementById('mainImagePreview');
+  const mainImagePreviewImg = document.getElementById('mainImagePreviewImg');
+  mainImageInput.addEventListener('change', function(){
+    const file = mainImageInput.files && mainImageInput.files[0];
+    if(!file){ mainImagePreview.classList.remove('has-image'); return; }
+    readAsDataURL(file, function(dataUrl){
+      mainImagePreviewImg.src = dataUrl;
+      mainImagePreview.classList.add('has-image');
+    });
+  });
+
+  const blocksContainer = document.getElementById('blocksContainer');
+  const addTextBtn = document.getElementById('addTextBtn');
+  const addImageBtn = document.getElementById('addImageBtn');
+  const imageCountNote = document.getElementById('imageCountNote');
+
+  let blockSeq = 0;
+  let imageBlockCount = 0;
+
+  function renumberBlocks(){
+    const blocks = blocksContainer.querySelectorAll('.content-block');
+    blocks.forEach(function(block, index){
+      block.querySelector('.block-no').textContent = index + 1;
+    });
+  }
+
+  function updateImageButtonState(){
+    imageCountNote.textContent = '画像ブロック:' + imageBlockCount + ' / ' + MAX_IMAGE_BLOCKS;
+    addImageBtn.disabled = imageBlockCount >= MAX_IMAGE_BLOCKS;
+  }
+
+  addTextBtn.addEventListener('click', function(){
+    blockSeq++;
+    const block = document.createElement('div');
+    block.className = 'content-block';
+    block.dataset.type = 'text';
+    block.innerHTML =
+      '<div class="block-header">' +
+        '<span class="block-no">' + blockSeq + '</span>' +
+        '<span class="block-type">本文</span>' +
+        '<span class="block-actions"><button type="button" class="block-remove" title="このブロックを削除"><i class="ti ti-x"></i></button></span>' +
+      '</div>' +
+      '<textarea class="form-control block-textarea" rows="5" placeholder="本文を入力してください"></textarea>';
+    blocksContainer.appendChild(block);
+    block.querySelector('.block-remove').addEventListener('click', function(){
+      block.remove();
+      renumberBlocks();
+    });
+  });
+
+  addImageBtn.addEventListener('click', function(){
+    if(imageBlockCount >= MAX_IMAGE_BLOCKS) return;
+    blockSeq++;
+    imageBlockCount++;
+    const block = document.createElement('div');
+    block.className = 'content-block';
+    block.dataset.type = 'image';
+    block.innerHTML =
+      '<div class="block-header">' +
+        '<span class="block-no">' + blockSeq + '</span>' +
+        '<span class="block-type">画像</span>' +
+        '<span class="block-actions"><button type="button" class="block-remove" title="このブロックを削除"><i class="ti ti-x"></i></button></span>' +
+      '</div>' +
+      '<input type="file" class="form-control block-image" accept="image/*">' +
+      '<div class="image-preview block-image-preview"><img src="" alt="画像プレビュー"></div>';
+    blocksContainer.appendChild(block);
+
+    const fileInput = block.querySelector('.block-image');
+    const preview = block.querySelector('.block-image-preview');
+    const previewImg = preview.querySelector('img');
+    fileInput.addEventListener('change', function(){
+      const file = fileInput.files && fileInput.files[0];
+      if(!file){ preview.classList.remove('has-image'); return; }
+      readAsDataURL(file, function(dataUrl){
+        previewImg.src = dataUrl;
+        preview.classList.add('has-image');
+      });
+    });
+
+    block.querySelector('.block-remove').addEventListener('click', function(){
+      block.remove();
+      imageBlockCount--;
+      renumberBlocks();
+      updateImageButtonState();
+    });
+
+    updateImageButtonState();
+  });
+
+  updateImageButtonState();
+
+  const form = document.getElementById('blogForm');
+  const previewPanel = document.getElementById('previewPanel');
+  const previewDate = document.getElementById('previewDate');
+  const previewCategory = document.getElementById('previewCategory');
+  const previewTitle = document.getElementById('previewTitle');
+  const previewMainImg = document.getElementById('previewMainImg');
+  const previewBlocks = document.getElementById('previewBlocks');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const dateVal = document.getElementById('blogDate').value;
+    previewDate.textContent = dateVal ? dateVal.replace(/-/g,'.') : '';
+    const checkedCat = document.querySelector('input[name="category"]:checked');
+    previewCategory.textContent = checkedCat ? checkedCat.value : '';
+    previewTitle.textContent = document.getElementById('blogTitle').value;
+
+    if(mainImagePreview.classList.contains('has-image')){
+      previewMainImg.src = mainImagePreviewImg.src;
+      previewMainImg.hidden = false;
+    } else {
+      previewMainImg.hidden = true;
+    }
+
+    previewBlocks.innerHTML = '';
+    blocksContainer.querySelectorAll('.content-block').forEach(function(block){
+      if(block.dataset.type === 'text'){
+        const text = block.querySelector('.block-textarea').value;
+        if(!text) return;
+        const p = document.createElement('div');
+        p.className = 'preview-block-text';
+        p.textContent = text;
+        previewBlocks.appendChild(p);
+      } else {
+        const preview = block.querySelector('.block-image-preview');
+        if(!preview.classList.contains('has-image')) return;
+        const el = document.createElement('img');
+        el.className = 'preview-block-img';
+        el.src = preview.querySelector('img').src;
+        previewBlocks.appendChild(el);
+      }
+    });
+
+    previewPanel.hidden = false;
+    previewPanel.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+})();
+</script>
+</body>
+</html>

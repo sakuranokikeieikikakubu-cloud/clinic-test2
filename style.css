@@ -405,6 +405,7 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
      width. Scoped to #reservation so other schedule-table uses (fees,
      etc.) are unaffected. */
   #reservation .schedule-table{ max-width:480px; }
+  #about .schedule-table{ max-width:480px; }
 }
 
 /* ---------- Blog list ---------- */

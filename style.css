@@ -356,10 +356,10 @@ nav.gnav .sub-menu li a{ display:block; padding:9px 12px; font-size:13px; border
 }
 .timeline-item:last-child::after{ content:none; }
 .timeline-year{
-  display:inline-block; font-size:13px; font-weight:700; color:#F096AF;
-  background:#FDECF1; border-radius:999px; padding:6px 16px; margin-bottom:8px;
+  display:inline-block; font-size:13px; font-weight:700; color:var(--text-heading);
+  background:#FCDCE7; border-radius:999px; padding:6px 16px; margin-bottom:8px;
 }
-.timeline-desc{ font-size:14px; color:#333333; }
+.timeline-desc{ font-size:14px; color:var(--text-heading); }
 @media (max-width:600px){
   .timeline-item{ padding-bottom:18px; }
   .timeline-year{ margin-bottom:6px; }

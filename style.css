@@ -643,6 +643,7 @@ a.symptom-tag:hover{ background:#fbdce6; }
 /* ---------- Jump nav buttons ---------- */
 .jump-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px; }
 .jump-grid > :last-child:nth-child(odd){ grid-column:1 / -1; }
+.jump-grid--no-stretch > :last-child:nth-child(odd){ grid-column:auto; }
 @media (max-width:600px){
   .jump-grid{ grid-template-columns:1fr; }
 }

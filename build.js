@@ -153,12 +153,62 @@ function syncSideFab(html, sideFabPartial, file) {
   return html.slice(0, insertAt) + sideFabPartial + html.slice(insertAt);
 }
 
+// Sync the top page's news list (date/title/link for every entry) from all
+// <article class="news-entry"> blocks in news.html, so news.html stays the
+// single source of truth for news content: editing news.html and running
+// `node build.js` keeps index.html's list in sync automatically instead of
+// requiring every headline to be typed in twice. news.html itself always
+// shows every entry; index.html shows every entry too, but CSS
+// (`.news-list .news-item:nth-child(n+4)` in style.css) hides the 4th one
+// onward, so only the latest 3 are visible on the top page.
+function syncNewsList(html, newsHtml, file) {
+  if (file !== 'index.html') return html;
+
+  const articleRegex =
+    /<article class="news-entry" id="([^"]+)">[\s\S]*?<h2>([\s\S]*?)<\/h2>[\s\S]*?<p class="news-date">([\s\S]*?)<\/p>/g;
+  const items = [];
+  let match;
+  while ((match = articleRegex.exec(newsHtml)) !== null) {
+    const [, id, title, dateLabel] = match;
+    // news-date is like "📅 2026.07.27" — strip the leading emoji/whitespace.
+    const date = dateLabel.replace(/^[^\d]*/, '').trim();
+    items.push({ id, title, date });
+  }
+  if (items.length === 0) {
+    console.warn(`  [skip] news-list: no <article class="news-entry"> found in news.html`);
+    return html;
+  }
+
+  const startMark = '<!-- news-list:start -->';
+  const endMark = '<!-- news-list:end -->';
+  const startIdx = html.indexOf(startMark);
+  if (startIdx === -1) {
+    console.warn(`  [skip] news-list: start marker not found in ${file}`);
+    return html;
+  }
+  const endIdx = html.indexOf(endMark, startIdx);
+  if (endIdx === -1) {
+    console.warn(`  [skip] news-list: end marker not found in ${file}`);
+    return html;
+  }
+  const endOfRegion = endIdx + endMark.length;
+
+  const indent = '      ';
+  const itemLines = items
+    .map((item) => `${indent}  <div class="news-item"><time>${item.date}</time><a href="news.html#${item.id}">${item.title}</a></div>`)
+    .join('\n');
+  const replacement =
+    `${startMark}\n${indent}<div class="news-list">\n${itemLines}\n${indent}</div>\n${indent}${endMark}`;
+  return html.slice(0, startIdx) + replacement + html.slice(endOfRegion);
+}
+
 function main() {
   const headerPartial = readPartial('header.html');
   const footerPartial = readPartial('footer.html');
   const navScriptPartial = readPartial('nav-script.js');
   const structuredDataPartial = readPartial('structured-data.html');
   const sideFabPartial = readPartial('side-fab.html');
+  const newsHtml = fs.readFileSync(path.join(ROOT, 'news.html'), 'utf8');
 
   // admin-*.html pages (投稿管理画面) are standalone tools with their own
   // markup and inline script — they don't include the shared
@@ -197,6 +247,7 @@ function main() {
     updated = syncSideFab(updated, sideFab, file);
     updated = replaceUpTo(updated, '<footer id="footer">', '<script>', footer + nl + nl, 'footer', file);
     updated = syncNavScript(updated, navScript, file);
+    updated = syncNewsList(updated, newsHtml, file);
 
     if (updated !== original) {
       fs.writeFileSync(filePath, updated, 'utf8');

@@ -484,6 +484,9 @@ section{ padding:64px 0; scroll-margin-top:84px; }
 .news-item{ display:flex; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); font-size:13px; }
 .news-item time{ color:var(--green); font-weight:700; flex:none; width:100px; }
 .news-item a:hover{ text-decoration:underline; }
+/* TOPページには最新3件だけを表示し、4件目以降はnews.htmlの「一覧」でのみ見せる。
+   運用上はnews-list内に全件残したままでよく、非表示にする件数の調整はここだけでよい。 */
+.news-list .news-item:nth-child(n+4){ display:none; }
 
 table.hours{ width:100%; table-layout:fixed; border-collapse:collapse; font-size:13px; text-align:center; }
 table.hours th, table.hours td{ border:1px solid var(--line); padding:9px 3px; overflow:hidden; }

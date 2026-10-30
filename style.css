@@ -548,25 +548,15 @@ td.closed .dept-symbol{ color:var(--text-heading); font-weight:400; }
   filter:drop-shadow(0 4px 10px rgba(0,0,0,.12));
 }
 @media (min-width:821px){
-  /* Staggered (inverted-triangle) layout: 3 cards evenly spaced on row 1,
-     the remaining 2 centered directly beneath each gap on row 2. A 5-column
-     grid makes that centering exact — row-2 cards simply occupy the columns
-     between the row-1 ones. */
+  /* PC: 4枚を1行に横並び */
   .svc-grid{
     display:grid;
-    grid-template-columns:repeat(5,minmax(0,1fr));
+    grid-template-columns:repeat(4,minmax(0,1fr));
     justify-items:center;
-    gap:12px 8px;
-    max-width:700px;
+    gap:16px;
+    max-width:928px;
   }
-  .svc-card{ width:220px; }
-  .svc-card:nth-child(1){ grid-column:1; grid-row:1; }
-  .svc-card:nth-child(2){ grid-column:3; grid-row:1; }
-  .svc-card:nth-child(3){ grid-column:5; grid-row:1; }
-  .svc-card:nth-child(4){ grid-column:2; grid-row:2; }
-  .svc-card:nth-child(5){ grid-column:4; grid-row:2; }
-  /* 4枚のときは最後の1枚を2行目の中央に置く */
-  .svc-card:nth-child(4):nth-last-child(1){ grid-column:2 / 5; grid-row:2; }
+  .svc-card{ width:100%; }
 }
 
 /* ---------- Features (5 reasons) ---------- */

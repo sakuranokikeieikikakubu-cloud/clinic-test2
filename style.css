@@ -622,6 +622,10 @@ a.symptom-tag:hover{ background:#fbdce6; }
   a.symptom-tag{ font-size:12px; padding:9px 10px; min-height:52px; display:flex; align-items:center; justify-content:center; }
   .sp-break{ display:inline; }
 }
+.sp-br{ display:none; }
+@media (max-width:768px){
+  .sp-br{ display:inline; }
+}
 
 /* ---------- Greeting ---------- */
 .greeting{ background:var(--green-pale); }
